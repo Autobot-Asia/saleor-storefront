@@ -19,13 +19,6 @@ const DetailWrapper = styled.div`
     margin-top: 12px;
     display:flex;
 `
-const NRow = styled.div`
-display:flex;
-`
-const NColumn = styled.div`
-display:flex;
-flex-direction:column;
-`
 const MOCK_LINK: Breadcrumb[] = [{
     link: 'Demo1', value: 'Demo1'
 }, {
