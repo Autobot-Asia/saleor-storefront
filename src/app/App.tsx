@@ -16,6 +16,7 @@ import ShopProvider from "../components/ShopProvider";
 import Notifications from "./Notifications";
 
 import "../globalStyles/scss/index.scss";
+import { ProductDetail } from "@temp/components/ProductDetail/ProductDetail";
 
 const App: React.FC = ({ children }) => {
   const { pathname } = useRouter();
@@ -31,6 +32,7 @@ const App: React.FC = ({ children }) => {
         <MetaConsumer />
         <MainMenu demoMode={demoMode} />
         {children}
+        <ProductDetail />
         <Footer />
         <OverlayManager />
         <Notifications />
