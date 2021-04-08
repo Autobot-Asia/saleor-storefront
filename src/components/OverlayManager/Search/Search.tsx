@@ -1,20 +1,18 @@
+import { OfflinePlaceholder } from "@components/atoms";
+import TextField from "@temp/components/TextField";
+import { channelSlug } from "@temp/constants";
+import { commonMessages } from "@temp/intl";
 import { NextRouter, withRouter } from "next/router";
 import React, { useState } from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps,
+  WrappedComponentProps
 } from "react-intl";
 import ReactSVG from "react-svg";
-
-import { OfflinePlaceholder } from "@components/atoms";
-import TextField from "@temp/components/TextField";
-import { channelSlug } from "@temp/constants";
-import { commonMessages } from "@temp/intl";
-
+import { Loader } from "../..";
 import { maybe } from "../../../core/utils";
 import searchImg from "../../../images/search.svg";
-import { Loader } from "../..";
 import Button from "../../Button/index";
 import { Error } from "../../Error";
 import NetworkStatus from "../../NetworkStatus";
@@ -22,7 +20,6 @@ import { SearchResults } from "./gqlTypes/SearchResults";
 import NothingFound from "./NothingFound";
 import ProductItem from "./ProductItem";
 import { TypedSearchResults } from "./queries";
-
 import "./scss/index.scss";
 
 interface SearchProps extends WrappedComponentProps {
@@ -43,8 +40,12 @@ function Search(props: SearchProps) {
       <div className="search__input">
         <TextField
           onChange={evt => {
-            setHasSearchPhrase(false);
             setSearchTerms(evt.target.value);
+          }}
+          onKeyPress={e => {
+            if (e.key === "Enter") {
+              setHasSearchPhrase(true);
+            }
           }}
           placeholder={props.intl.formatMessage(commonMessages.search)}
         />
@@ -75,7 +76,7 @@ function Search(props: SearchProps) {
                   {({ data, error, loading }) => {
                     if (hasResults(data)) {
                       return (
-                        <>
+                        <div>
                           <ul>
                             {data.products.edges.map(product => (
                               <ProductItem {...product} key={product.node.id} />
@@ -94,7 +95,7 @@ function Search(props: SearchProps) {
                               </Button>
                             )}
                           </div>
-                        </>
+                        </div>
                       );
                     }
 
@@ -106,7 +107,14 @@ function Search(props: SearchProps) {
                       );
                     }
 
-                    return <NothingFound search={searchTerms} />;
+                    return (
+                      <NothingFound
+                        search={searchTerms}
+                        closeSearch={() => {
+                          setHasSearchPhrase(false);
+                        }}
+                      />
+                    );
                   }}
                 </TypedSearchResults>
               );
