@@ -27,7 +27,7 @@ interface SearchProps extends WrappedComponentProps {
 
 function Search(props: SearchProps) {
   const [searchTerms, setSearchTerms] = useState(props.router.query.q || "");
-  const [isSearch, setIsSearch] = React.useState(false);
+  const [, setIsSearch] = React.useState(false);
 
   const [hasSearchPhrase, setHasSearchPhrase] = useState(false);
 
