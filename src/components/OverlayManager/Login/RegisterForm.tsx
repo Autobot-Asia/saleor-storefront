@@ -126,6 +126,7 @@ const RegisterForm: React.FC = () => {
   const initialForm: RegisterFormType = {
     email: "",
     phoneCode: "",
+    phone: "",
   };
   const [isSupplier, setIsSupplier] = React.useState(false);
   const validateSchema: Yup.ObjectSchema<RegisterFormType> = React.useMemo(() => {
@@ -349,7 +350,7 @@ const RegisterForm: React.FC = () => {
                             onBlur={handleBlur}
                             onChange={e => {
                               const isNum = /^\d+$/.test(e.target.value);
-                              if (isNum || e.target.value.length === 0) {
+                              if (isNum) {
                                 handleChange(e);
                               }
                             }}
