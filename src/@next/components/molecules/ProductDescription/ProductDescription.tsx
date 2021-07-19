@@ -9,7 +9,7 @@ import * as S from "./styles";
 import { IProps } from "./types";
 
 enum TABS {
-  DESCRIPTION = "DESCRIPION",
+  DESCRIPTION = "DESCRIPTION",
   ATTRIBUTES = "ATTRIBUTES",
   REVIEW = "REVIEW",
 }
@@ -18,8 +18,15 @@ export const ProductDescription: React.FC<IProps> = ({
   description,
   attributes,
   store,
+  checkPrice,
 }: IProps) => {
   const [activeTab, setActiveTab] = React.useState<TABS>(TABS.DESCRIPTION);
+
+  React.useEffect(() => {
+    if (checkPrice) {
+      setActiveTab(TABS.REVIEW);
+    }
+  }, [checkPrice]);
 
   return (
     <S.Wrapper>
