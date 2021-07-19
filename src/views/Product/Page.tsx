@@ -1,6 +1,8 @@
 // import StarRatings from "react-star-ratings";
 // import ReactSVG from "react-svg";
+import { useAuth } from "@saleor/sdk";
 import classNames from "classnames";
+import { useRouter } from "next/router";
 import React from "react";
 // import {
 //   GoogleMap,
@@ -16,6 +18,7 @@ import { ProductDescription } from "@components/molecules";
 import { ProductGallery } from "@components/organisms";
 import AddToCartSection from "@components/organisms/AddToCartSection";
 import ProductDetail from "@components/organisms/ProductDetail";
+import { paths } from "@paths";
 // import { orange, white } from "@styles/constants";
 import ChatBox from "@temp/components/ChatBox";
 
@@ -70,6 +73,7 @@ const Page: React.FC<
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
   const overlayContext = React.useContext(OverlayContext);
   const [variantId, setVariantId] = React.useState("");
+  const [checkPrice, setCheckPrice] = React.useState(false);
 
   const getImages = () => {
     if (product.variants && variantId) {
@@ -93,9 +97,16 @@ const Page: React.FC<
     add(variantId, quantity);
     overlayContext.show(OverlayType.cart, OverlayTheme.right);
   };
+  const { push } = useRouter();
+  const { user } = useAuth();
+  const handleBuyNow = (variantId, quantity) => {
+    add(variantId, quantity);
+    push(user ? paths.checkout : paths.login);
+  };
 
   const addToCartSection = (
     <AddToCartSection
+      setCheckPrice={setCheckPrice}
       items={items}
       productId={product.id}
       name={product.name}
@@ -103,6 +114,7 @@ const Page: React.FC<
       productPricing={product.pricing}
       queryAttributes={queryAttributes}
       setVariantId={setVariantId}
+      onBuyNow={handleBuyNow}
       variantId={variantId}
       onAddToCart={handleAddToCart}
       onAttributeChangeHandler={onAttributeChangeHandler}
@@ -127,7 +139,13 @@ const Page: React.FC<
   //     </GoogleMap>
   //   ))
   // );
-
+  React.useEffect(() => {
+    if (checkPrice) {
+      setTimeout(() => {
+        setCheckPrice(false);
+      }, 2000);
+    }
+  }, [checkPrice]);
   return (
     <div className="product-page">
       <div className="container">
@@ -287,6 +305,7 @@ const Page: React.FC<
             description={product.description}
             attributes={product.attributes}
             store={product.store}
+            checkPrice={checkPrice}
           />
         </div>
         {/* <div ref={contactSupplierRef}>

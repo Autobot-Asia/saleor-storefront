@@ -7,4 +7,5 @@ export interface IProps {
     attribute: { name: string };
     values: Array<{ name: string }>;
   }>;
+  checkPrice?: boolean;
 }

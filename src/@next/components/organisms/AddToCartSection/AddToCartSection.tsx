@@ -32,10 +32,13 @@ export interface IAddToCartSection {
   variantId: string;
   setVariantId(variantId: string): void;
   onAddToCart(variantId: string, quantity?: number): void;
+  onBuyNow(variantId: string, quantity?: number): void;
+  setCheckPrice(check: boolean): void;
   onAttributeChangeHandler(slug: string | null, value: string): void;
 }
 
 const AddToCartSection: React.FC<IAddToCartSection> = ({
+  setCheckPrice,
   availableForPurchase,
   isAvailableForPurchase,
   items,
@@ -43,13 +46,13 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   productPricing,
   productVariants,
   queryAttributes,
+  onBuyNow,
   onAddToCart,
   onAttributeChangeHandler,
   setVariantId,
   variantId,
 }) => {
   const intl = useIntl();
-
   const [quantity, setQuantity] = useState<number>(1);
   const [variantStock, setVariantStock] = useState<number>(0);
   const [
@@ -178,14 +181,17 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           />
           <span>Thêm vào giỏ hàng</span>
         </S.BoxAddTrolley>
-        <S.BoxQuote>
-          <Link to="price" spy smooth>
+        <Link to="price" spy smooth onClick={() => setCheckPrice(true)}>
+          <S.BoxQuote>
             <span>Nhận báo giá </span>
-          </Link>
-        </S.BoxQuote>
+          </S.BoxQuote>
+        </Link>
       </S.WrapperOptionBuy>
 
-      <AddToCartButton disabled={disableButton} />
+      <AddToCartButton
+        onSubmit={() => onBuyNow(variantId, quantity)}
+        disabled={disableButton}
+      />
     </S.AddToCartSelection>
   );
 };
