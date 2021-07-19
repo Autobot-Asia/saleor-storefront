@@ -9,6 +9,7 @@ import { paths } from "@paths";
 
 import locationIcon from "../../../../images/ios-location.svg";
 import telephoneIcon from "../../../../images/telephone-fill.svg";
+import messageIcon from "../../../../images/message.svg";
 import { IProps } from "./types";
 
 import "./scss/StoreProfile.scss";
@@ -87,7 +88,7 @@ export const StoreProfile: React.FC<IProps> = ({ store }: IProps) => {
         </div>
         <div className="product-page__product__address--connectShop">
           <div className="connectShopOption">
-            <img src="" alt="" />
+            <img src={messageIcon} alt="" />
             <span>Chat ngay</span>
           </div>
           {store?.id && (
