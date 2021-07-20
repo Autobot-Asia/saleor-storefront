@@ -3,6 +3,7 @@ import "./styles";
 // @ts-ignore
 import Carousel from "nuka-carousel";
 import React from "react";
+// @ts-ignore
 import ReactImageZoom from "react-image-zoom";
 
 // import { Icon } from "@components/atoms";
