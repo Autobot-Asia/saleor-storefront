@@ -8,6 +8,7 @@ import StarRatings from "react-star-ratings";
 import { paths } from "@paths";
 
 import locationIcon from "../../../../images/ios-location.svg";
+// import messageIcon from "../../../../images/message.svg";
 import telephoneIcon from "../../../../images/telephone-fill.svg";
 import messageIcon from "../../../../images/message.svg";
 import { IProps } from "./types";

@@ -1,18 +1,19 @@
 import "./styles";
 
-import React from "react";
 // @ts-ignore
 import Carousel from "nuka-carousel";
+import React from "react";
 import ReactImageZoom from "react-image-zoom";
-import { useInView } from "react-intersection-observer";
 
+// import { Icon } from "@components/atoms";
 import { CachedImage } from "@components/molecules";
 
+import nextCarouselImg from "../../../../images/nextCarouselHomePage.svg";
+import preCarouselImg from "../../../../images/preCarouselHomePage.svg";
 import { ListImageModal } from "../ListImageModal";
 import * as S from "./styles";
 import { IProps } from "./types";
-import nextCarouselImg from "../../../../images/nextCarouselHomePage.svg";
-import preCarouselImg from "../../../../images/preCarouselHomePage.svg";
+
 const MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS = 5;
 
 export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
@@ -20,7 +21,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
   const [showModal, setShowModal] = React.useState<boolean>(false);
   const [listImage, setListImage] = React.useState<any>([]);
 
-  const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
+  // const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
 
   React.useEffect(() => {
     if (imageIndex >= images.length) {
@@ -28,42 +29,42 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
     }
   }, [images]);
 
-  const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
-  const topImageRef = React.useRef<HTMLDivElement | null>(null);
-  const [topImageIntersectionObserver, topImageInView] = useInView({
-    threshold: 0.5,
-  });
+  // const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
+  // const topImageRef = React.useRef<HTMLDivElement | null>(null);
+  // const [topImageIntersectionObserver, topImageInView] = useInView({
+  //   threshold: 0.5,
+  // });
 
-  const [bottomImageIntersectionObserver, bottomImageInView] = useInView({
-    threshold: 0.5,
-  });
+  // const [bottomImageIntersectionObserver, bottomImageInView] = useInView({
+  //   threshold: 0.5,
+  // });
 
-  const setBottomRef = React.useCallback(
-    node => {
-      bottomImageRef.current = node;
-      bottomImageIntersectionObserver(node);
-    },
-    [bottomImageIntersectionObserver]
-  );
+  // const setBottomRef = React.useCallback(
+  //   node => {
+  //     bottomImageRef.current = node;
+  //     bottomImageIntersectionObserver(node);
+  //   },
+  //   [bottomImageIntersectionObserver]
+  // );
 
-  const setTopRef = React.useCallback(
-    node => {
-      topImageRef.current = node;
-      topImageIntersectionObserver(node);
-    },
-    [topImageIntersectionObserver]
-  );
+  // const setTopRef = React.useCallback(
+  //   node => {
+  //     topImageRef.current = node;
+  //     topImageIntersectionObserver(node);
+  //   },
+  //   [topImageIntersectionObserver]
+  // );
 
-  const setIntersectionObserver = (index: number, lengthOfArray: number) => {
-    if (lengthOfArray > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS) {
-      if (index === 0) {
-        return setTopRef;
-      }
-      if (index === lengthOfArray - 1) {
-        return setBottomRef;
-      }
-    }
-  };
+  // const setIntersectionObserver = (index: number, lengthOfArray: number) => {
+  //   if (lengthOfArray > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS) {
+  //     if (index === 0) {
+  //       return setTopRef;
+  //     }
+  //     if (index === lengthOfArray - 1) {
+  //       return setBottomRef;
+  //     }
+  //   }
+  // };
 
   const propsImg = {
     width: 371,
@@ -81,9 +82,9 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
   const onChangeIndex = (index: number) => {
     setImageIndex(index);
   };
-  const previousSlide = () => {
-    setImageIndex(prev => prev - 1);
-  };
+  // const previousSlide = () => {
+  //   setImageIndex(prev => prev - 1);
+  // };
   return (
     <S.Wrapper data-test="productPhotosGallery">
       <S.ThumbnailsContainer>
@@ -124,7 +125,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
             wrapAround
             slidesToShow={5}
             speed={300}
-            renderBottomCenterControls={false}
+            renderBottomCenterControls={null}
             afterSlide={slideIndex => setImageIndex(slideIndex)}
             renderCenterLeftControls={({ previousSlide, currentSlide }) => (
               <S.TopButton
@@ -171,7 +172,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
                   //   data-test-id={index}
                   // >
                   <S.Thumbnail
-                    // ref={setIntersectionObserver(index, images.length)}
+                    // ref={(index, images.length)}
                     onClick={() => setImageIndex(index)}
                     activeThumbnail={Boolean(index === imageIndex)}
                   >

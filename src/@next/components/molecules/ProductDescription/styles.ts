@@ -1,5 +1,5 @@
 import { media, styled } from "@styles";
-import { orange, white } from "@styles/constants";
+import { black, orange, white } from "@styles/constants";
 
 export const Wrapper = styled.div``;
 
@@ -36,7 +36,7 @@ export const Tabs = styled.div`
 
 export const TabTitle = styled.div<{ active?: boolean }>`
   cursor: pointer;
-  font-size: ${props => props.theme.typography.baseFontSize};
+  // font-size: ${props => props.theme.typography.baseFontSize};
   letter-spacing: 0.02em;
   color: ${props => props.active && props.theme.colors.tabTitle};
   border-bottom-width: ${props => (props.active ? "4px" : "0")};
@@ -49,7 +49,11 @@ export const TabTitle = styled.div<{ active?: boolean }>`
   border-left: 1px solid #dcdee3;
   border-right: 1px solid #dcdee3;
   border-radius: 8px 8px 0 0;
-  background-color: ${props => (props.active ? "#ffffff" : "transparent")};
+  background-color: #ffffff;
+  font: normal normal normal 16px/19px Arial;
+  letter-spacing: 0.06px;
+  // color: ${black};
+  opacity: 1;
 
   ${media.smallScreen`
     font-size: ${(props: any) => props.theme.typography.baseFontSize};
