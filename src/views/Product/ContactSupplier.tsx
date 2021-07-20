@@ -100,7 +100,7 @@ export const ContactSupplier = ({ productID, storeID }: any) => {
                           <TextField
                             name="message"
                             label={intl.formatMessage(commonMessages.message)}
-                            placeholder="Nội dung"
+                            // placeholder="Nội dung"
                             type="textarea"
                             value={values.message}
                             onBlur={handleBlur}
@@ -123,9 +123,8 @@ export const ContactSupplier = ({ productID, storeID }: any) => {
                           <TextField
                             name="quantityNumber"
                             label={intl.formatMessage(commonMessages.quantity)}
-                            type="number"
-                            placeholder="(Ví dụ: 100kg)"
-                            // value={values.quantityNumber}
+                            // placeholder="(Ví dụ: 100kg)"
+                            value={values.quantityNumber}
                             onBlur={handleBlur}
                             onChange={e => {
                               const isNum = /^\d+$/.test(e.target.value);

@@ -9,6 +9,7 @@ export const TextField: React.FC<IProps> = ({
   errors,
   helpText,
   disabled,
+  type,
   ...rest
 }: IProps) => {
   const hasErrors = !!(errors && errors.length);
@@ -16,7 +17,7 @@ export const TextField: React.FC<IProps> = ({
   return (
     <>
       <S.TextField>
-        <Input disabled={disabled} {...rest} error={hasErrors} />
+        <Input type={type} disabled={disabled} {...rest} error={hasErrors} />
         <S.ErrorMessages>
           <ErrorMessage errors={errors} />
           {helpText && <S.HelpText>{helpText}</S.HelpText>}

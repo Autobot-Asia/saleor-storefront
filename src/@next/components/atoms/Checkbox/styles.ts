@@ -8,7 +8,7 @@ export const Checkbox = styled.div`
   align-items: center;
   cursor: pointer;
   position: relative;
-  margin-left: -4px;
+  // margin-left: -4px;
 `;
 
 export const Label = styled.label`
@@ -26,25 +26,26 @@ export const Label = styled.label`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 26px;
-    width: 26px;
+    height: 20px;
+    width: 20px;
+    border: 1px solid ${props => props.theme.colors.mainColor};
 
     span {
-      border: 1px solid ${props => props.theme.colors.mainColor};
+      // border: 1px solid ${props => props.theme.colors.mainColor};
       width: 14px;
       height: 14px;
       display: inline-block;
     }
 
     ${Checkbox}:hover & {
-      border-radius: 50%;
-      border: 1px solid;
-      border-color: ${props => props.theme.colors.secondaryOverlay};
-      background-color: ${props => props.theme.colors.secondaryOverlay};
+      // border-radius: 50%;
+      // border: 1px solid;
+      border-color: ${props => props.theme.colors.mainColor};
+      // background-color: ${props => props.theme.colors.secondaryOverlay};
     }
 
     :focus {
-      border-radius: 50%;
+      // border-radius: 50%;
       // border: 1px solid;
       outline: none;
       // border-color: ${props => props.theme.colors.secondaryOverlayDark};
