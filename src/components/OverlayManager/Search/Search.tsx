@@ -58,8 +58,12 @@ function Search(props: SearchProps) {
   useOutsideAlerter(wrapperRef);
 
   const handleClickShowAll = () => {
-    if (searchTerms.length > 0) {
-      props.router.push(`${paths.search}?q=${searchTerms}`);
+    if ((searchTerms as string).trim().length > 0) {
+      setShowResult(false);
+      const keyword = (searchTerms as string).trim();
+      setReset(true);
+      props.router.push(`${paths.search}?q=${keyword}`);
+      setSearchTerms("");
     }
   };
 
@@ -100,8 +104,16 @@ function Search(props: SearchProps) {
           }}
           onKeyPress={e => {
             if (e.key === "Enter") {
+              if ((searchTerms as string).trim().length === 0) {
+                setSearchTerms("");
+                setReset(true);
+                return;
+              }
               setShowResult(false);
-              props.router.push(`${paths.search}?q=${searchTerms}`);
+              const keyword = (searchTerms as string).trim();
+              setReset(true);
+              props.router.push(`${paths.search}?q=${keyword}`);
+              setSearchTerms("");
             }
           }}
           value={searchTerms}
