@@ -134,6 +134,9 @@ $drawer-width: 25rem;
     }
     &__wrapper-allProduct {
       display: block !important;
+      max-height: 300px;
+      overflow-y: scroll;
+      background-color: $white;
     }
   }
 
