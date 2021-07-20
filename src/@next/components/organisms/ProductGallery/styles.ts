@@ -56,7 +56,7 @@ export const TopButton = styled(Button)`
 export const BottomButton = styled(Button)`
   right: 0;
   transform: translateY(-50%) translateX(50%) !important;
-`; 
+`;
 
 export const ThumbnailsContainer = styled.div`
   position: relative;
