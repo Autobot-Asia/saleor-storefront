@@ -10,7 +10,6 @@ import { paths } from "@paths";
 
 import locationIcon from "../../../../images/ios-location.svg";
 import messageIcon from "../../../../images/message.svg";
-// import messageIcon from "../../../../images/message.svg";
 import telephoneIcon from "../../../../images/telephone-fill.svg";
 import { IProps } from "./types";
 
