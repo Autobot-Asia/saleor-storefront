@@ -3,9 +3,10 @@ import "./styles";
 // @ts-ignore
 import Carousel from "nuka-carousel";
 import React from "react";
+// @ts-ignore
 import ReactImageZoom from "react-image-zoom";
 
-// import { useInView } from "react-intersection-observer";
+// import { Icon } from "@components/atoms";
 import { CachedImage } from "@components/molecules";
 
 import nextCarouselImg from "../../../../images/nextCarouselHomePage.svg";
@@ -172,7 +173,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
                   //   data-test-id={index}
                   // >
                   <S.Thumbnail
-                    // ref={setIntersectionObserver(index, images.length)}
+                    // ref={(index, images.length)}
                     onClick={() => setImageIndex(index)}
                     activeThumbnail={Boolean(index === imageIndex)}
                   >

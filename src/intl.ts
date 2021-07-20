@@ -89,7 +89,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Confirm Password",
   },
   quantity: {
-    defaultMessage: "Quantity",
+    defaultMessage: "Số lượng",
   },
   sku: {
     defaultMessage: "SKU",
@@ -170,7 +170,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Thạch sanh",
   },
   message: {
-    defaultMessage: "Message",
+    defaultMessage: "Nội dung",
   },
   quantityType: {
     defaultMessage: "Quantity Type",

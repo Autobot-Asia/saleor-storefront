@@ -30,7 +30,7 @@ export const Label = styled.label`
     width: 26px;
 
     span {
-      border: 1px solid ${props => props.theme.colors.secondary};
+      border: 1px solid ${props => props.theme.colors.mainColor};
       width: 14px;
       height: 14px;
       display: inline-block;
@@ -45,18 +45,18 @@ export const Label = styled.label`
 
     :focus {
       border-radius: 50%;
-      border: 1px solid;
+      // border: 1px solid;
       outline: none;
-      border-color: ${props => props.theme.colors.secondaryOverlayDark};
-      background-color: ${props => props.theme.colors.secondaryOverlayDark};
+      // border-color: ${props => props.theme.colors.secondaryOverlayDark};
+      // background-color: ${props => props.theme.colors.secondaryOverlayDark};
     }
   }
 
   input:checked + div {
     span {
       background-clip: content-box;
-      padding: 2px;
-      background-color: ${props => props.theme.colors.secondary};
+      padding: 1px;
+      background-color: ${props => props.theme.colors.mainColor};
     }
   }
 `;

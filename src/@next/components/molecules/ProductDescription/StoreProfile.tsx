@@ -3,6 +3,7 @@ import React from "react";
 import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
 import Marker from "react-google-maps/lib/components/Marker";
 // import { FormattedMessage } from "react-intl";
+// @ts-ignore
 import StarRatings from "react-star-ratings";
 
 import { paths } from "@paths";

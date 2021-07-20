@@ -32,6 +32,7 @@ export const mainColorPage = "#188C72";
 
 // theme colors
 export const theme = {
+  mainColor: mainColorPage,
   activeMenuOption: darkGreen,
   autofill: autofillColor,
   autofillSelected: autofillColorSelected,

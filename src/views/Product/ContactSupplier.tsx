@@ -123,7 +123,7 @@ export const ContactSupplier = ({ productID, storeID }: any) => {
                           <TextField
                             name="quantityNumber"
                             label={intl.formatMessage(commonMessages.quantity)}
-                            type="text"
+                            type="number"
                             placeholder="(Ví dụ: 100kg)"
                             // value={values.quantityNumber}
                             onBlur={handleBlur}
