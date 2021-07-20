@@ -19,6 +19,14 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
   const [showModal, setShowModal] = React.useState<boolean>(false);
   const [listImage, setListImage] = React.useState<any>([]);
 
+  const [test, setTest] = React.useState(false);
+
+  React.useEffect(() => {
+    if (test) {
+      setTest(false);
+    }
+  }, [test]);
+
   const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
 
   React.useEffect(() => {
