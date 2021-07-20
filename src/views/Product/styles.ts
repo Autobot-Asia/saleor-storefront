@@ -1,5 +1,5 @@
 import { media, styled } from "@styles";
-import { boldFontWeight, white } from "@styles/constants";
+import { boldFontWeight, mainColorPage, white } from "@styles/constants";
 
 export const Wrapper = styled.div`
   background-color: ${white};
@@ -21,6 +21,20 @@ export const Content = styled.div`
 `;
 
 export const ContentEditOneLine = styled.div`
+  .caTYvM {
+    border: 1px solid ${mainColorPage};
+  }
+  .eqMiH {
+    border: 1px solid ${mainColorPage};
+    outline-color: ${mainColorPage};
+  }
+  .eqMiH:hover {
+    border-color: ${mainColorPage};
+    outline-color: ${mainColorPage};
+  }
+  .caTYvM {
+    outline-color: ${mainColorPage};
+  }
   width: 100%;
   display: flex;
   flex-direction: row;
