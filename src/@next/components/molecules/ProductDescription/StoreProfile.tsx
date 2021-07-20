@@ -3,14 +3,15 @@ import React from "react";
 import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
 import Marker from "react-google-maps/lib/components/Marker";
 // import { FormattedMessage } from "react-intl";
+// @ts-ignore
 import StarRatings from "react-star-ratings";
 
 import { paths } from "@paths";
 
 import locationIcon from "../../../../images/ios-location.svg";
+import messageIcon from "../../../../images/message.svg";
 // import messageIcon from "../../../../images/message.svg";
 import telephoneIcon from "../../../../images/telephone-fill.svg";
-import messageIcon from "../../../../images/message.svg";
 import { IProps } from "./types";
 
 import "./scss/StoreProfile.scss";
