@@ -1,10 +1,15 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+// import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
 import { RichTextEditorContent } from "@components/atoms";
 import { grayMedium } from "@styles/constants";
 
+import { Breadcrumbs } from "../../../../components";
+import {
+  generateCategoryUrl,
+  generateProductUrl,
+} from "../../../../core/utils";
 import * as S from "./styles";
 
 const Wrapper = styled.div`
@@ -20,11 +25,11 @@ const List = styled.div`
 `;
 
 const ListItem = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   margin-top: 0.5rem;
   @media (max-width: 1024px) {
-    width: 50%;
+    width: 100%;
   }
   @media (max-width: 768px) {
     width: 100%;
@@ -38,8 +43,9 @@ const Line = styled.div`
 `;
 type Props = {
   description: string | undefined;
+  product: any;
 };
-export const ProductDetailTab: React.FC<Props> = ({ description }) => {
+export const ProductDetailTab: React.FC<Props> = ({ description, product }) => {
   const mockData = [
     {
       title: "Style",
@@ -67,24 +73,71 @@ export const ProductDetailTab: React.FC<Props> = ({ description }) => {
     },
     { title: "Model Number", value: "1" },
   ];
+  // console.log("product", product);
+
+  const populateBreadcrumbs = (product: any) => [
+    {
+      link: generateCategoryUrl(product.category.id, product.category.name),
+      value: product.category.name,
+    },
+    {
+      link: generateProductUrl(product.id, product.name),
+      value: product.name,
+    },
+  ];
 
   return (
     <S.Wrapper>
       <S.WrapBox>
         <S.CompanyImage>
           <S.TitleText>
-            <FormattedMessage defaultMessage="Quick Detail" />
+            {/* <FormattedMessage defaultMessage="Quick Detail" /> */}
           </S.TitleText>
         </S.CompanyImage>
         <Wrapper>
           <List>
+            <div
+              style={{
+                flex: 14,
+                alignSelf: "flex-end",
+                fontWeight: 500,
+                font: "font: normal normal bold 16px Arial",
+              }}
+            >
+              Danh mục:
+            </div>
+            <div
+              style={{
+                position: "relative",
+                flex: 86,
+                alignSelf: "flex-end",
+                font: "font: normal normal bold 16px Arial",
+              }}
+            >
+              <div style={{ position: "absolute", top: -40 }}>
+                <Breadcrumbs breadcrumbs={populateBreadcrumbs(product)} />
+              </div>
+            </div>
             {mockData.map((item, index) => {
               return (
                 <ListItem key={index}>
-                  <div style={{ flex: 1, fontWeight: "bold" }}>
+                  <div
+                    style={{
+                      flex: 14,
+                      fontWeight: 500,
+                      font: "font: normal normal bold 16px Arial",
+                    }}
+                  >
                     {item.title}:
                   </div>
-                  <div style={{ flex: 2 }}>{item.value}</div>
+                  <div
+                    style={{
+                      flex: 86,
+                      font: "font: normal normal bold 16px Arial",
+                    }}
+                  >
+                    {item.value}
+                  </div>
                 </ListItem>
               );
             })}
@@ -92,9 +145,7 @@ export const ProductDetailTab: React.FC<Props> = ({ description }) => {
         </Wrapper>
         <Line />
         <S.CompanyImage>
-          <S.TitleText>
-            <FormattedMessage defaultMessage="Description" />
-          </S.TitleText>
+          <S.TitleText>Mô tả sản phẩm</S.TitleText>
           <RichTextEditorContent jsonData={description} />
         </S.CompanyImage>
       </S.WrapBox>

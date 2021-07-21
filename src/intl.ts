@@ -167,7 +167,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Cancel",
   },
   home: {
-    defaultMessage: "Thạch sanh",
+    defaultMessage: "Thachsanh",
   },
   message: {
     defaultMessage: "Nội dung",

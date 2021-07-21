@@ -15,6 +15,7 @@ enum TABS {
 }
 
 export const ProductDescription: React.FC<IProps> = ({
+  product,
   description,
   attributes,
   store,
@@ -60,7 +61,7 @@ export const ProductDescription: React.FC<IProps> = ({
         </S.TabTitle>
       </S.Tabs>
       <S.WrapperContent hidden={activeTab !== TABS.DESCRIPTION}>
-        <ProductDetailTab description={description} />
+        <ProductDetailTab product={product} description={description} />
       </S.WrapperContent>
       <S.WrapperContent hidden={activeTab !== TABS.ATTRIBUTES}>
         {/* <S.AttributeList> */}

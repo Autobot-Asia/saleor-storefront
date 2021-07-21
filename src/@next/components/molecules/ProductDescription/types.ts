@@ -1,6 +1,7 @@
-import { StoreVariables } from "../../../../views/Product/gqlTypes/ProductDetails";
+import { StoreVariables } from "@temp/views/Product/gqlTypes/ProductDetails";
 
 export interface IProps {
+  product?: any;
   description?: string;
   store?: StoreVariables;
   attributes?: Array<{

@@ -302,6 +302,7 @@ const Page: React.FC<
         </div>
         <div className="product-page__product__description" id="price">
           <ProductDescription
+            product={product}
             description={product.description}
             attributes={product.attributes}
             store={product.store}
