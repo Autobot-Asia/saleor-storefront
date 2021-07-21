@@ -30,7 +30,6 @@ function Search(props: SearchProps) {
   const [searchTerms, setSearchTerms] = useState(props.router.query.q || "");
 
   const [hasSearchPhrase, setHasSearchPhrase] = useState(false);
-
   const hasResults = (data: SearchResults) =>
     maybe(() => !!data.products.edges.length);
 
@@ -63,12 +62,12 @@ function Search(props: SearchProps) {
       const keyword = (searchTerms as string).trim();
       setReset(true);
       props.router.push(`${paths.search}?q=${keyword}`);
-      setSearchTerms("");
+      setSearchTerms((searchTerms as string).trim());
     }
   };
 
   React.useEffect(() => {
-    if (searchTerms.length > 0 && props.router.pathname !== "/search") {
+    if ((searchTerms as string).trim().length > 0) {
       setShowResult(true);
       setHasSearchPhrase(true);
     } else {
@@ -76,7 +75,9 @@ function Search(props: SearchProps) {
       setHasSearchPhrase(false);
     }
   }, [searchTerms]);
-
+  React.useEffect(() => {
+    if (props.router.pathname.includes("/product")) setSearchTerms("");
+  }, [props.router]);
   const [reset, setReset] = React.useState(false);
 
   React.useEffect(() => {
@@ -113,7 +114,7 @@ function Search(props: SearchProps) {
               const keyword = (searchTerms as string).trim();
               setReset(true);
               props.router.push(`${paths.search}?q=${keyword}`);
-              setSearchTerms("");
+              setSearchTerms((searchTerms as string).trim());
             }
           }}
           value={searchTerms}
