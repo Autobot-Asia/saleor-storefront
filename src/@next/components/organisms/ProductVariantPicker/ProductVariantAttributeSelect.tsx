@@ -41,18 +41,16 @@ export const ProductVariantAttributeSelect: React.FC<{
     productVariantsAttributesSelectedValues
   );
   // const intl = useIntl();
+  const selectedAttribute =
+    productVariantsAttributesSelectedValues &&
+    productVariantsAttributesSelectedValues[productVariantsAttributeId];
 
-  // const selectedAttribute =
-  //   productVariantsAttributesSelectedValues &&
-  //   productVariantsAttributesSelectedValues[productVariantsAttributeId];
-
-  // const selectedValue = selectedAttribute && {
-  //   disabled: false,
-  //   id: selectedAttribute.id,
-  //   label: selectedAttribute.name!,
-  //   value: selectedAttribute.value!,
-  // };
-
+  const selectedValue = selectedAttribute && {
+    disabled: false,
+    id: selectedAttribute.id,
+    label: selectedAttribute.name!,
+    value: selectedAttribute.value!,
+  };
   const attributeOptions = productVariantsAttribute.values
     .filter(value => value)
     .map(value => {
@@ -76,7 +74,6 @@ export const ProductVariantAttributeSelect: React.FC<{
   const disabledValuesList = attributeOptions
     .filter(optionValue => optionValue.disabled)
     .map(optionValue => optionValue.value);
-
   const onSelectValueHandler = (optionValue: string, callback?: () => void) => {
     if (
       disabledValuesList.every(disabledValue => disabledValue !== optionValue)
@@ -170,7 +167,15 @@ export const ProductVariantAttributeSelect: React.FC<{
         {attributeOptions.length < 0
           ? ""
           : attributeOptions.map(option => (
-              <S.OptionItem>{option.value}</S.OptionItem>
+              <S.OptionItem
+                isSelected={
+                  selectedValue &&
+                  option.value === (selectedValue.value as string)
+                }
+                onClick={() => onSelectValueHandler(option.value)}
+              >
+                {option.value}
+              </S.OptionItem>
             ))}
       </S.WrapperList>
     </S.ListOptions>

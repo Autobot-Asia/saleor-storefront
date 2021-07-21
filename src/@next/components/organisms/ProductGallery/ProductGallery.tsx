@@ -123,11 +123,11 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
           {/* <ul> */}
           <Carousel
             style={{ width: "100%" }}
-            wrapAround
             slidesToShow={5}
             speed={300}
+            dragging={false}
             renderBottomCenterControls={null}
-            afterSlide={slideIndex => setImageIndex(slideIndex)}
+            afterSlide={slideIndex => setImageIndex(imageIndex)}
             renderCenterLeftControls={({ previousSlide, currentSlide }) => (
               <S.TopButton
                 style={{
@@ -139,7 +139,10 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
                       : "block"
                   }`,
                 }}
-                onClick={previousSlide}
+                onClick={() => {
+                  previousSlide();
+                  setImageIndex(prev => --prev);
+                }}
               >
                 <img src={preCarouselImg} alt="" />
               </S.TopButton>
@@ -154,10 +157,16 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
                 style={{
                   transform: "translateX(22px)",
                   display: `${
-                    currentSlide === images.length ? "none" : "block"
+                    imageIndex === images.length - 1 ||
+                    images.length <= MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS
+                      ? "none"
+                      : "block"
                   }`,
                 }}
-                onClick={nextSlide}
+                onClick={() => {
+                  nextSlide();
+                  setImageIndex(prev => ++prev);
+                }}
               >
                 <img src={nextCarouselImg} alt="" />
               </S.BottomButton>

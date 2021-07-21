@@ -30,8 +30,8 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
 `;
 
 export const Button = styled.div`
-  height: 20px;
-  width: 20px;
+  height: 26px;
+  width: 26px;
   position: absolute;
   z-index: 1;
   background-color: transparent;
