@@ -71,11 +71,12 @@ export const CompanyImage = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const TitleText = styled.h3`
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  text-transform: uppercase;
+export const TitleText = styled.p`
+  font: normal normal bold 18px Arial;
+  letter-spacing: 0.07px;
+  color: ${black};
+  opacity: 1;
+  margin-bottom: 11px;
 `;
 // export const SubTitleText = styled.h4`
 //   font-size: 14px;
