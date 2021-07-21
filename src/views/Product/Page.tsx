@@ -315,8 +315,14 @@ const Page: React.FC<
           />
         </div> */}
 
-        <SlideCarousel products={product.category.products.edges} />
-        <SlideCarousel products={product.category.products.edges} />
+        <SlideCarousel
+          products={product.category.products.edges}
+          title="Sản phẩm tương tự"
+        />
+        <SlideCarousel
+          products={product.category.products.edges}
+          title="Sản phẩm khác của hãng"
+        />
       </div>
       <ChatBox />
     </div>
