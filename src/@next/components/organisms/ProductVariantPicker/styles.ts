@@ -20,7 +20,7 @@ export const LabelOption = styled.p`
 
 export const ListOptions = styled.ul`
   display: flex;
-  justify content:flex-star;
+  justify-content: flex-start;
   width: 100%;
 `;
 
