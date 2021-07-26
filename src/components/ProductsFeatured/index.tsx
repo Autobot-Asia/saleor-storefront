@@ -38,6 +38,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
                   <div className="list__product" style={{ display: "unset" }}>
                     <Carousel
                       wrapAround
+                      renderBottomCenterControls={null}
                       slidesToScroll={5}
                       slidesToShow={5}
                       speed={1000}
@@ -94,6 +95,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
                   <div className="list__product" style={{ display: "unset" }}>
                     <Carousel
                       wrapAround
+                      renderBottomCenterControls={null}
                       slidesToScroll={5}
                       slidesToShow={5}
                       speed={1000}
@@ -155,6 +157,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
                     <Carousel
                       // withoutControls={true}
                       wrapAround
+                      renderBottomCenterControls={null}
                       slidesToScroll={5}
                       slidesToShow={5}
                       speed={1000}
