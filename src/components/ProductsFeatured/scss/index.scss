@@ -28,7 +28,7 @@
     background-color: $white;
     font: normal normal bold 20px/15px Arial;
     padding-left: 15px !important;
-    padding-top: 12px;
+    padding-top: $spacer;
     font-weight: $bold-font-weight;
     padding-bottom: $spacer;
     display: flex;
@@ -47,7 +47,7 @@
     // }
   }
   .list__product-sale {
-    height: 309px !important;
+    height: 300px !important;
   }
   .list__product {
     display: grid;
