@@ -30,10 +30,12 @@ export const WrapperList = styled.div`
   position: relative;
   width: 100%;
   min-height: 27px;
-  align-item: center;
+  align-items: center;
 `;
-
-export const OptionItem = styled.li`
+type OptionItemProps = {
+  isSelected: boolean | null;
+};
+export const OptionItem = styled.li<OptionItemProps>`
   cursor: pointer;
   z-index: 10;
   margin-right: 12px;
@@ -49,4 +51,6 @@ export const OptionItem = styled.li`
   &:hover {
     border: 0.30000001192092896px solid #188c72;
   }
+  border: ${props =>
+    props.isSelected ? " 0.30000001192092896px solid #188c72" : ""};
 `;
