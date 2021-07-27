@@ -11,6 +11,7 @@ import { Link } from "react-scroll";
 import { commonMessages } from "@temp/intl";
 import { IProductVariantsAttributesSelectedValues } from "@types";
 
+import disableAddToCart from "../../../../images/disableAddToCart.svg";
 import addProductDetail from "../../../../images/productDetailTrolley.svg";
 import AddToCartButton from "../../molecules/AddToCartButton";
 import QuantityInput from "../../molecules/QuantityInput";
@@ -173,10 +174,15 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         />
       </S.QuantityInput>
       <S.WrapperOptionBuy>
-        <S.BoxAddTrolley onClick={() => onAddToCart(variantId, quantity)}>
+        <S.BoxAddTrolley
+          isDisabled={disableButton}
+          onClick={
+            disableButton ? undefined : () => onAddToCart(variantId, quantity)
+          }
+        >
           <img
             style={{ marginRight: "11.5px" }}
-            src={addProductDetail}
+            src={disableButton ? disableAddToCart : addProductDetail}
             alt=""
           />
           <span>Thêm vào giỏ hàng</span>
