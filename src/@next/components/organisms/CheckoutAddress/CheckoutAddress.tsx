@@ -5,6 +5,8 @@ import { Checkbox } from "@components/atoms";
 import { checkoutMessages } from "@temp/intl";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
+import deliveryAddress from "../../../../images/deliveryAddress.svg";
+import invoice from "../../../../images/invoice.svg";
 import { AddressForm } from "../AddressForm";
 import { AddressGridSelector } from "../AddressGridSelector";
 import * as S from "./styles";
@@ -41,7 +43,8 @@ const CheckoutAddress: React.FC<IProps> = ({
         <>
           <section>
             <S.Title data-test="checkoutPageSubtitle">
-              <FormattedMessage {...checkoutMessages.shippingAddress} />
+              <img src={deliveryAddress} alt="" />
+              {checkoutMessages.deliveryAddress.defaultMessage}
             </S.Title>
             {userAddresses ? (
               <AddressGridSelector
@@ -80,9 +83,6 @@ const CheckoutAddress: React.FC<IProps> = ({
         </>
       )}
       <section>
-        <S.Title data-test="checkoutPageSubtitle">
-          <FormattedMessage {...checkoutMessages.billingAddress} />
-        </S.Title>
         {shippingAddressRequired && (
           <Checkbox
             data-test="checkoutAddressBillingAsShippingCheckbox"
@@ -92,12 +92,16 @@ const CheckoutAddress: React.FC<IProps> = ({
               setBillingAsShippingAddress(!billingAsShippingAddress)
             }
           >
-            <FormattedMessage defaultMessage="Same as shipping address" />
+            <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
           </Checkbox>
         )}
+        <S.Title data-test="checkoutPageSubtitle">
+          <img src={invoice} alt="" />
+          <FormattedMessage {...checkoutMessages.infoInvoice} />
+        </S.Title>
         {!billingAsShippingAddress && (
           <>
-            {shippingAddressRequired && <S.Divider />}
+            {shippingAddressRequired}
             {userAddresses ? (
               <AddressGridSelector
                 testingContext="billing"

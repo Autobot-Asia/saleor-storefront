@@ -7,6 +7,7 @@ interface WrapperProps {
 }
 
 export const Wrapper = styled.div<WrapperProps>`
+  box-shadow: 0px 0px 10px #00000029;
   background-color: ${props => props.theme.tile.backgroundColor};
   border: 1px transparent solid;
   overflow: auto;
@@ -28,15 +29,18 @@ export const Wrapper = styled.div<WrapperProps>`
     }
     if (props.tileType === "addNew") {
       return css`
-        color: ${props.theme.colors.secondary};
+        color: ${props.theme.colors.white};
         align-items: center;
         justify-content: center;
         :hover {
           cursor: pointer;
           color: ${props.theme.colors.white};
-          background-color: ${props.theme.colors.secondary};
+          background-color: ${props.theme.colors.mainColor};
           svg path {
             fill: ${props.theme.colors.white};
+          }
+          p {
+            color: ${props.theme.colors.white};
           }
         }
       `;

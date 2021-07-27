@@ -29,6 +29,8 @@ export const secondaryGreyDark = "#9D9FB1";
 export const secondaryBlue = "#036DFF";
 export const orange = "#ff6a00";
 export const mainColorPage = "#188C72";
+export const blackPrimary = "#000000";
+export const skuAndQuantity = "#7A7A7A";
 
 // theme colors
 export const theme = {
@@ -56,6 +58,8 @@ export const theme = {
   primary: mainColorPage,
   primaryDark: turquoiseDark,
   primaryLight: turquoiseLight,
+  primaryBlack: blackPrimary,
+  skuAndQuantity,
   primaryTransparent: turquoiseTransparent,
   secondary: blue,
   secondaryDark: blueDark,

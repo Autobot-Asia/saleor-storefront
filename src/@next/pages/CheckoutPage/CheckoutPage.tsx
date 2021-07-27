@@ -22,7 +22,6 @@ import {
   CheckoutAddressSubpage,
   CheckoutPaymentSubpage,
   CheckoutReviewSubpage,
-  CheckoutShippingSubpage,
 } from "./subpages";
 import {
   CHECKOUT_STEPS,
@@ -100,7 +99,6 @@ const CheckoutPage: React.FC<NextPage> = () => {
   const checkoutSubpage = useMemo(() => {
     const subpageMapping: Partial<Record<CheckoutStep, JSX.Element>> = {
       [CheckoutStep.Address]: <CheckoutAddressSubpage {...pageProps} />,
-      [CheckoutStep.Shipping]: <CheckoutShippingSubpage {...pageProps} />,
       [CheckoutStep.Payment]: (
         <CheckoutPaymentSubpage
           {...pageProps}
