@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { Icon } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { CartSummaryRow } from "@components/molecules";
 import { commonMessages } from "@temp/intl";
 
+import Trolley from "../../../../images/trolleyCheckout.svg";
 import * as S from "./styles";
 import { CartSummaryProps, ICostLine, ICosts } from "./types";
 
@@ -28,12 +29,12 @@ const Costs = ({ subtotal, promoCode, shipping, total }: ICosts) => {
   const intl = useIntl();
   return (
     <S.Costs>
-      {subtotal && (
+      {/* {subtotal && (
         <CostLine
           name={intl.formatMessage(commonMessages.subtotal)}
           cost={subtotal}
         />
-      )}
+      )} */}
       {shipping && (
         <CostLine
           name={intl.formatMessage(commonMessages.shipping)}
@@ -71,43 +72,49 @@ const CartSummary: React.FC<CartSummaryProps> = ({
   const [mobileCartOpened, setMobileCartOpened] = useState(false);
 
   return (
-    <S.Wrapper mobileCartOpened={mobileCartOpened}>
-      <S.Title
-        data-test="cartSummaryTitle"
-        onClick={() => setMobileCartOpened(!mobileCartOpened)}
-      >
-        <FormattedMessage defaultMessage="Cart Summary" />
-        <S.ArrowUp mobileCartOpened={mobileCartOpened}>
-          <Icon name="arrow_up" size={24} />
-        </S.ArrowUp>
-      </S.Title>
-      <S.Content>
-        <S.HR />
-        <S.CartSummaryProductList>
-          {products?.map((product, index) => (
-            <div key={product.sku}>
-              <S.ProductLine>
-                <CartSummaryRow
-                  index={index}
-                  sku={product.sku}
-                  quantity={product.quantity}
-                  name={product.name}
-                  price={product.price}
-                  thumbnail={product.thumbnail}
-                />
-              </S.ProductLine>
-              <S.HR />
-            </div>
-          ))}
-        </S.CartSummaryProductList>
-        <Costs
-          subtotal={subtotal}
-          total={total}
-          shipping={shipping}
-          promoCode={promoCode}
-        />
-      </S.Content>
-    </S.Wrapper>
+    <>
+      <S.Wrapper mobileCartOpened={mobileCartOpened}>
+        <S.Title
+          data-test="cartSummaryTitle"
+          onClick={() => setMobileCartOpened(!mobileCartOpened)}
+        >
+          <img src={Trolley} alt="" />
+          <p>Giỏ hàng</p>
+          <S.ArrowUp mobileCartOpened={mobileCartOpened}>
+            <Icon name="arrow_up" size={24} />
+          </S.ArrowUp>
+        </S.Title>
+        <S.Content>
+          <S.CartSummaryProductList>
+            {products?.map((product, index) => (
+              <div key={product.sku}>
+                <S.ProductLine>
+                  <CartSummaryRow
+                    index={index}
+                    sku={product.sku}
+                    quantity={product.quantity}
+                    name={product.name}
+                    price={product.price}
+                    thumbnail={product.thumbnail}
+                  />
+                </S.ProductLine>
+              </div>
+            ))}
+          </S.CartSummaryProductList>
+          <S.ShowAll>Xem tất cả</S.ShowAll>
+          <S.HR />
+          <Costs
+            subtotal={subtotal}
+            total={total}
+            shipping={shipping}
+            promoCode={promoCode}
+          />
+        </S.Content>
+      </S.Wrapper>
+      <S.Payment>
+        <p>Thanh Toán</p>
+      </S.Payment>
+    </>
   );
 };
 

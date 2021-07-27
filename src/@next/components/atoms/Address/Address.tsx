@@ -18,27 +18,12 @@ export const Address: React.FC<IAddress> = ({
 }: IAddress) => (
   <div>
     <S.Name>{`${firstName} ${lastName}`}</S.Name>
-    {companyName && (
-      <>
-        {companyName} <br />
-      </>
-    )}
-    {streetAddress1}
-    <br />
-    {streetAddress2 && (
-      <>
-        {streetAddress2} <br />
-      </>
-    )}
-    {postalCode && `${postalCode},`} {city}
-    <br />
-    {countryArea && <>{countryArea}, </>}
-    {country!.country}
-    <br />
-    {phone && (
-      <>
-        Phone number: {phone} <br />
-      </>
-    )}
+    {companyName && <S.Text>{companyName}</S.Text>}
+    <S.Text>{streetAddress1}</S.Text>
+    {streetAddress2 && <S.Text>{streetAddress2}</S.Text>}
+    {postalCode && <S.Text>${postalCode},</S.Text>} <S.Text>{city}</S.Text>
+    {countryArea && <S.Text>{countryArea}, </S.Text>}
+    <S.Text>{country!.country}</S.Text>
+    {phone && <S.Text>Phone number: {phone}</S.Text>}
   </div>
 );

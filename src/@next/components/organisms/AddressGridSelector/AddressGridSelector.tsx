@@ -65,7 +65,7 @@ const AddressGridSelector: React.FC<IProps> = ({
           return (
             <form id={formId} ref={formRef} onSubmit={handleSubmit}>
               <TileGrid
-                columns={2}
+                columns={3}
                 elements={addresses.reduce(
                   (elements, { id, address }, index) => {
                     elements.push(

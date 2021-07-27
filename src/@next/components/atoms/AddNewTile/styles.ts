@@ -15,3 +15,10 @@ export const Content = styled.div`
     font-weight: ${props => props.theme.typography.boldFontWeight};
   }
 `;
+
+export const Text = styled.p`
+  color: ${props => props.theme.colors.mainColor};
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 500 !important;
+`;

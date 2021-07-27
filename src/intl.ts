@@ -92,7 +92,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Số lượng",
   },
   sku: {
-    defaultMessage: "SKU",
+    defaultMessage: "Loại",
   },
   maxQtyIs: {
     defaultMessage: "Maximum quantity is {maxQuantity}",
@@ -110,7 +110,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Promo code",
   },
   total: {
-    defaultMessage: "Total",
+    defaultMessage: "Tạm tính",
   },
   totalPrice: {
     defaultMessage: "Total Price",
@@ -179,16 +179,19 @@ export const commonMessages = defineMessages({
 
 export const checkoutMessages = defineMessages({
   stepNameAddress: {
-    defaultMessage: "Address",
+    defaultMessage: "Địa chỉ",
   },
   stepNameShipping: {
     defaultMessage: "Shipping",
   },
   stepNamePayment: {
-    defaultMessage: "Payment",
+    defaultMessage: "Thanh Toán",
   },
   stepNameReview: {
     defaultMessage: "Review",
+  },
+  stepNameCompleted: {
+    defaultMessage: "Hoàn thành",
   },
   addressNextActionName: {
     defaultMessage: "Continue to Shipping",
@@ -208,8 +211,8 @@ export const checkoutMessages = defineMessages({
   shippingMethod: {
     defaultMessage: "SHIPPING METHOD",
   },
-  billingAddress: {
-    defaultMessage: "BILLING ADDRESS",
+  infoInvoice: {
+    defaultMessage: "Thông tin hoá đơn",
   },
   paymentMethod: {
     defaultMessage: "PAYMENT METHOD",
@@ -222,6 +225,9 @@ export const checkoutMessages = defineMessages({
   },
   continueShopping: {
     defaultMessage: "CONTINUE SHOPPING",
+  },
+  deliveryAddress: {
+    defaultMessage: "Địa chỉ giao hàng",
   },
 });
 
