@@ -25,6 +25,8 @@ const ProductsNews: React.FC<ProductsFeaturedProps> = ({ title }) => {
       variables={{ channel: channelSlug }}
     >
       {({ data }) => {
+        // eslint-disable-next-line no-console
+        console.log(data);
         const products = data.collection?.products?.edges || [];
         if (products.length) {
           return (

@@ -15,9 +15,9 @@ import { checkoutMessages } from "@temp/intl";
 import { ITaxedMoney } from "@types";
 
 const title = (
-  <h1 data-test="cartPageTitle">
-    <FormattedMessage defaultMessage="My Cart" />
-  </h1>
+  <h2 data-test="cartPageTitle">
+    <FormattedMessage defaultMessage="Giỏ Hàng" />
+  </h2>
 );
 
 const getShoppingButton = () => (
@@ -30,9 +30,10 @@ const getShoppingButton = () => (
 
 const getCheckoutButton = (user?: UserDetails_me | null) => (
   <Link href={user ? paths.checkout : paths.login}>
-    <Button testingContext="proceedToCheckoutButton">
-      <FormattedMessage defaultMessage="PROCEED TO CHECKOUT" />
-    </Button>
+    {/* <Button testingContext="proceedToCheckoutButton">
+      <FormattedMessage defaultMessage="Mua Hàng" />
+    </Button> */}
+    <div className="btn btn-success w-100">Mua hàng</div>
   </Link>
 );
 
