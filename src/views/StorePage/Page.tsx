@@ -10,7 +10,6 @@ import { channelSlug } from "@temp/constants";
 
 import FollowButton from "../../components/FollowButton";
 import { TypedHomePageQuery } from "../Home/queries";
-import { ProductDetails_product_images } from "../Product/gqlTypes/ProductDetails";
 import AllProducts from "./AllProducts";
 import { CategorySection } from "./CategorySection";
 import Overview from "./Overview";
@@ -126,37 +125,16 @@ const Page: React.FC<Props> = ({ storeId }) => {
   return (
     <>
       <TypedListCarousel>
-        {data => {
+        {_data => {
           // TODO : mock list carousel
-          const index = data.data?.pages?.edges?.findIndex(
-            item => item.node.isPublished
-          );
-          const dataCarousel: ProductDetails_product_images[] =
-            data &&
-            data.data?.pages?.edges[index > -1 ? index : 0]?.node?.media?.map(
-              item => ({
-                id: item.id,
-                alt: item.alt,
-                __typename: "ProductImage",
-                url: `http://thachsanh.store:8080/media/${item.image}`,
-              })
-            );
 
           return (
             <>
               <NavigationBar listNav={ListNav} />
-              <StoreCarousel
-                images={
-                  dataCarousel
-                    ? dataCarousel.length > 5
-                      ? dataCarousel.slice(0, 5)
-                      : dataCarousel
-                    : []
-                }
-                isSlide
-              />
+              <StoreCarousel />
               <AllProducts />
               <Overview />
+              <StoreCarousel />
               {user ? (
                 <S.Wrapper>
                   <TypeStoreForUserQuery variables={{ id: storeId }}>

@@ -240,26 +240,167 @@
       margin-bottom: $spacer * 2;
       padding: 0;
     }
-    &__nav {
-      li {
-        display: inline-block;
-        padding: $spacer / 2;
+  }
+}
 
-        span {
-          width: $spacer / 2;
-          height: $spacer / 2;
-          background-color: $gray;
-          border-radius: $spacer / 2;
-          display: block;
+@mixin btn_store_page {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  border: 1px solid #188c72;
+  border-radius: 3px;
+  opacity: 1;
+}
+.store_profile {
+  margin-top: 60px !important;
+  width: 1242px;
+  margin: auto;
+  box-shadow: 0px 0px 10px #00000029;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
+  .store_profile_top {
+    display: flex;
+    .store_avatar {
+      width: 481px;
+      .img_background {
+        width: 481px;
+        height: 212px;
+        position: relative;
+        .store_cover {
+          width: 100%;
+          height: 212px;
+          background: transparent 0% 0% no-repeat padding-box;
+          opacity: 1;
         }
-
-        &.active {
-          span {
-            background-color: $orange;
-            border-color: $orange;
+        .store_profile_avatar {
+          width: 70px;
+          height: 70px;
+          position: absolute;
+          top: 177px;
+          left: 30px;
+          background: transparent 0% 0% no-repeat padding-box;
+          border: 3px solid #ffffff;
+          border-radius: 213px;
+          opacity: 1;
+        }
+      }
+      .store_avatar_button {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 14px;
+        .btn_follow {
+          @include btn_store_page();
+          width: 85px;
+          height: 35px;
+          background: #188c72 0% 0% no-repeat padding-box;
+          button {
+            text-align: left;
+            font: normal normal normal 14px/15px Arial;
+            letter-spacing: 0.06px;
+            color: #ffffff;
+            opacity: 1;
+          }
+        }
+        .btn_chat {
+          @include btn_store_page();
+          width: 85px;
+          height: 35px;
+          margin-left: 15px;
+          background: #ffffff 0% 0% no-repeat padding-box;
+          button {
+            text-align: left;
+            font: normal normal normal 14px/15px Arial;
+            letter-spacing: 0.28px;
+            color: #188c72;
+            opacity: 1;
           }
         }
       }
+      .store_name {
+        margin-left: 27px;
+        span {
+          text-align: left;
+          font: normal normal bold 20px/15px Arial;
+          letter-spacing: 0.4px;
+          color: #000000;
+          text-transform: capitalize;
+          opacity: 1;
+        }
+      }
+    }
+    .store_info {
+      max-width: 349px;
+      margin-left: 31px;
+      .store_info_title {
+        color: var(--main-color);
+        text-align: left;
+        font: normal normal bold 18px/15px Arial;
+        letter-spacing: 0.36px;
+        color: #188c72;
+        opacity: 1;
+        margin-top: 19px;
+      }
+      .store_info_description {
+        p {
+          margin-top: 8px;
+          text-align: left;
+          font: normal normal normal 15px/22px Arial;
+          letter-spacing: 0.3px;
+          color: #000000;
+          opacity: 1;
+        }
+      }
+    }
+    .store_contact {
+      margin-left: 44px;
+      .store_contact_companyName {
+        margin-top: 24px;
+        .store_contact_icon {
+          background: transparent 0% 0% no-repeat padding-box;
+          opacity: 1;
+        }
+      }
+
+      .store_contact_text {
+        text-align: left;
+        font: normal normal normal 13px/14px Arial;
+        letter-spacing: 0.05px;
+        color: #000000;
+        opacity: 1;
+        margin-top: 17px;
+        span {
+          margin-left: 4px;
+        }
+        .store_contact_map {
+          margin-top: 17px;
+          background: transparent 0% 0% no-repeat padding-box;
+          border: 0.10000000149011612px solid #188c72;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .store_profile_bottom {
+    .hlCazA {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      text-align: left;
+      font: normal normal normal 16px/15px Arial;
+      letter-spacing: 0.32px;
+      color: #000000;
+      opacity: 1;
+    }
+    .hTnTeq {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      text-align: left;
+      font: normal normal normal 16px/15px Arial;
+      letter-spacing: 0.32px;
+      color: #188c72;
+      opacity: 1;
     }
   }
 }
