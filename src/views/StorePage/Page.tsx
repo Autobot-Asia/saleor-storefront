@@ -143,16 +143,7 @@ const Page: React.FC<Props> = ({ storeId }) => {
           return (
             <>
               <NavigationBar listNav={ListNav} />
-              <StoreCarousel
-                images={
-                  dataCarousel
-                    ? dataCarousel.length > 5
-                      ? dataCarousel.slice(0, 5)
-                      : dataCarousel
-                    : []
-                }
-                isSlide
-              />
+              <StoreCarousel />
               {user ? (
                 <S.Wrapper>
                   <TypeStoreForUserQuery variables={{ id: storeId }}>
