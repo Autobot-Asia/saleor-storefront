@@ -11,7 +11,9 @@ import { channelSlug } from "@temp/constants";
 import FollowButton from "../../components/FollowButton";
 import { TypedHomePageQuery } from "../Home/queries";
 import { ProductDetails_product_images } from "../Product/gqlTypes/ProductDetails";
+import AllProducts from "./AllProducts";
 import { CategorySection } from "./CategorySection";
+import Overview from "./Overview";
 import {
   TypedListCarousel,
   TypedListFollow,
@@ -153,6 +155,8 @@ const Page: React.FC<Props> = ({ storeId }) => {
                 }
                 isSlide
               />
+              <AllProducts />
+              <Overview />
               {user ? (
                 <S.Wrapper>
                   <TypeStoreForUserQuery variables={{ id: storeId }}>
