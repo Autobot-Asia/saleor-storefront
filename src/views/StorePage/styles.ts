@@ -28,11 +28,7 @@ export const WrapperContainer = styled.div`
   }
 `;
 
-export const WrapperContent = styled.div`
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 12px;
-`;
+export const WrapperContent = styled.div``;
 
 export const List = styled.div`
   display: flex;

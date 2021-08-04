@@ -1,26 +1,26 @@
-import { useAuth } from "@saleor/sdk";
+// import { useAuth } from "@saleor/sdk";
 import React from "react";
 
-import { Loader } from "@components/atoms";
-import { orange } from "@styles/constants";
+// import { Loader } from "@components/atoms";
+// import { orange } from "@styles/constants";
 import ChatBox from "@temp/components/ChatBox";
-import { MainProductList } from "@temp/components/MainProductList";
+// import { MainProductList } from "@temp/components/MainProductList";
 import NavigationBar from "@temp/components/NavigationBar";
-import { channelSlug } from "@temp/constants";
 
-import FollowButton from "../../components/FollowButton";
-import { TypedHomePageQuery } from "../Home/queries";
-import AllProducts from "./AllProducts";
-import { CategorySection } from "./CategorySection";
-import Overview from "./Overview";
+// import { channelSlug } from "@temp/constants";
+// import FollowButton from "../../components/FollowButton";
+// import { TypedHomePageQuery } from "../Home/queries";
+// import AllProducts from "./AllProducts";
+// import { CategorySection } from "./CategorySection";
+// import Overview from "./Overview";
 import {
   TypedListCarousel,
-  TypedListFollow,
-  TypedProductListQuery,
-  TypeStoreForUserQuery,
+  // TypedListFollow,
+  // TypedProductListQuery,
+  // TypeStoreForUserQuery,
 } from "./queries";
 import StoreCarousel from "./StoreCarousel";
-import * as S from "./styles";
+// import * as S from "./styles";
 
 type Props = {
   storeId: string;
@@ -33,9 +33,9 @@ export type ListProductType = {
   tab: string[];
 };
 const Page: React.FC<Props> = ({ storeId }) => {
-  const [reRender, setRerender] = React.useState(false);
+  // const [reRender, setRerender] = React.useState(false);
 
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const ListNav = [
     {
       title: "Home",
@@ -132,10 +132,9 @@ const Page: React.FC<Props> = ({ storeId }) => {
             <>
               <NavigationBar listNav={ListNav} />
               <StoreCarousel />
-              <AllProducts />
-              <Overview />
-              <StoreCarousel />
-              {user ? (
+              {/* <AllProducts /> */}
+              {/* <Overview /> */}
+              {/* {user ? (
                 <S.Wrapper>
                   <TypeStoreForUserQuery variables={{ id: storeId }}>
                     {({ data }) => {
@@ -228,7 +227,7 @@ const Page: React.FC<Props> = ({ storeId }) => {
 
                   return <CategorySection categoryInfo={categoryInfo} />;
                 }}
-              </TypedHomePageQuery>
+              </TypedHomePageQuery> */}
             </>
           );
         }}
