@@ -1,26 +1,57 @@
 import * as React from "react";
 
-import { Button } from "@components/atoms";
+import { Button, DropdownMenu } from "@components/atoms";
 import { TextField } from "@components/molecules";
 import { Label } from "@components/molecules/ProductListHeader/styles";
 import { Form } from "@components/organisms/StripeCreditCardForm/styles";
 import { channelSlug } from "@temp/constants";
 
+import DropDown from "../../images/dropdown.svg";
 import Next from "../../images/next.svg";
-import Star from "../../images/star.svg";
+import Star from "../../images/star-1.svg";
 import { ListProductType } from "./Page";
 import ProductList from "./ProductList";
 import { TypedProductListQuery } from "./queries";
 
 import "./scss/index.scss";
 
+const items = [
+  {
+    onClick: () => {},
+    content: <span>This is test</span>,
+  },
+  {
+    onClick: () => {},
+    content: <span>This is test 2</span>,
+  },
+  {
+    onClick: () => {},
+    content: <span>This is test 3</span>,
+  },
+];
+
+const header = (
+  <div className="all-product-filter">
+    <span>Bộ lọc</span>
+    <img src={DropDown} alt="dropdown" className="all_product_icon_filter" />
+  </div>
+);
+
+const DEFAULT_PROPS = {
+  header,
+  items,
+};
+
 const AllProducts: React.FC<{}> = () => (
   <div>
     <div>
       <div className="card-all-products">
+        <div className="all-product-dropdown">
+          <DropdownMenu type="hoverable" {...DEFAULT_PROPS} />
+        </div>
         <div className="card-all-product-row">
           <div className="card-all-product-container">
-            <Label className="all-product-category-lable">Theo Danh Mục</Label>
+            <Label className="all-product-category-lable">Theo danh mục</Label>
             <div className="all-product-category">
               <div className="all-product-category-1">
                 <div className="item-product-category">
@@ -135,6 +166,9 @@ const AllProducts: React.FC<{}> = () => (
                     type="text"
                   />
                 </Form>
+              </div>
+              <div className="price-range-line">
+                <hr className="range-line" />
               </div>
 
               <div className="all-product-pricerange-input-last">

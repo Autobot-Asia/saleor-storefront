@@ -1,5 +1,6 @@
 import React from "react";
 
+// import { FormattedMessage } from "react-intl";
 import { LoginForm } from "..";
 
 const SignInForm: React.FC = () => (
