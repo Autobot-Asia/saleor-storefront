@@ -5,8 +5,11 @@
 }
 
 .checkout-login {
-  margin: $spacer * 3 0;
+  margin-top: 4rem;
   display: flex;
+  background-image: url(../../../images/login-background-1.png);
+  width: 1280px;
+  height: 619px;
 
   @media (max-width: $medium-screen) {
     display: block;

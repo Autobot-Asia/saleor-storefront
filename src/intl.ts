@@ -83,7 +83,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Last Name",
   },
   password: {
-    defaultMessage: "Password",
+    defaultMessage: "Mật khẩu",
   },
   confirmPassword: {
     defaultMessage: "Confirm Password",
@@ -119,7 +119,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Checkout",
   },
   eMail: {
-    defaultMessage: "Email address or member ID",
+    defaultMessage: "Email hoặc Số điện thoại",
   },
   shortEmail: {
     defaultMessage: "Email",
