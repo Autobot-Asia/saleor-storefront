@@ -13,13 +13,17 @@ import {
 import * as S from "./styles";
 
 const Wrapper = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  flex-wrap: wrap !important;
+  flex-wrap: wrap !important; */
+`;
+const BreadcrumbWrapper = styled.div`
+  display: flex;
 `;
 const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  /* flex-wrap: wrap; */
+  grid-template-columns: 50% 50%;
   height: fit-content;
   width: 100%;
 `;
@@ -95,7 +99,7 @@ export const ProductDetailTab: React.FC<Props> = ({ description, product }) => {
           </S.TitleText>
         </S.CompanyImage>
         <Wrapper>
-          <List>
+          <BreadcrumbWrapper>
             <div
               style={{
                 flex: 14,
@@ -118,12 +122,14 @@ export const ProductDetailTab: React.FC<Props> = ({ description, product }) => {
                 <Breadcrumbs breadcrumbs={populateBreadcrumbs(product)} />
               </div>
             </div>
+          </BreadcrumbWrapper>
+          <List>
             {mockData.map((item, index) => {
               return (
                 <ListItem key={index}>
                   <div
                     style={{
-                      flex: 14,
+                      flex: 28,
                       fontWeight: 500,
                       font: "font: normal normal bold 16px Arial",
                     }}
@@ -132,7 +138,7 @@ export const ProductDetailTab: React.FC<Props> = ({ description, product }) => {
                   </div>
                   <div
                     style={{
-                      flex: 86,
+                      flex: 72,
                       font: "font: normal normal bold 16px Arial",
                     }}
                   >
