@@ -1,9 +1,10 @@
+/* eslint-disable no-return-assign */
 import { useAuth, useCart, useCheckout } from "@saleor/sdk";
 import { IItems } from "@saleor/sdk/lib/api/Cart/types";
 import { UserDetails_me } from "@saleor/sdk/lib/queries/gqlTypes/UserDetails";
 import { NextPage } from "next";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { Button, CartFooter, CartHeader } from "@components/atoms";
@@ -94,7 +95,16 @@ const generateCart = (
   ));
 };
 
+const productQuantity = (items: IItems) => {
+  let quantity: number = 0;
+  items?.map(item => {
+    return (quantity += item.quantity);
+  });
+  return quantity;
+};
+
 export const CartPage: React.FC<NextPage> = () => {
+  const [totalQuantity, setTotalQuantity] = useState<number>(0);
   const { user } = useAuth();
   const { checkout } = useCheckout();
   const {
@@ -107,6 +117,16 @@ export const CartPage: React.FC<NextPage> = () => {
     shippingPrice,
     discount,
   } = useCart();
+
+  useEffect(() => {
+    setTotalQuantity(productQuantity(items));
+  }, [items]);
+
+  const onDeleteAllProduct = () => {
+    items?.map(item => {
+      return removeItem(item.variant.id);
+    });
+  };
 
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
@@ -133,6 +153,8 @@ export const CartPage: React.FC<NextPage> = () => {
           subtotalPrice
         )}
         cart={items && generateCart(items, removeItem, updateItem)}
+        totalQuantity={totalQuantity}
+        onDeleteAllProduct={onDeleteAllProduct}
       />
     );
   }

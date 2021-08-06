@@ -20,7 +20,12 @@ const Cart: React.FC<IProps> = ({
   cartFooter,
   cart,
   button,
+  totalQuantity = 0,
+  onDeleteAllProduct = () => {},
 }: IProps) => {
+  const onDelete = () => {
+    onDeleteAllProduct();
+  };
   return (
     <>
       {/* <Container>
@@ -74,15 +79,15 @@ const Cart: React.FC<IProps> = ({
                         id="apple"
                       />
                       <label className="form-check-label" htmlFor="apple">
-                        Chọn tất cả (5)
+                        Chọn tất cả ({totalQuantity})
                       </label>
                     </div>
                   </td>
                   <td className="delete-all" colSpan={3}>
-                    <a href="/">
+                    <button onClick={onDelete}>
                       <img src={trash} alt="delete" width={20} height={20} />
-                      <span>Xóa cả giỏ hàng (5)</span>
-                    </a>
+                      <span>Xóa cả giỏ hàng ({totalQuantity})</span>
+                    </button>
                   </td>
 
                   <td className="total-amount">

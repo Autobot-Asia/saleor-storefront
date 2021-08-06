@@ -8,7 +8,7 @@ import { channelSlug } from "@temp/constants";
 import { generateProductUrl } from "../../core/utils";
 import nextCarouselImg from "../../images/nextCarouselHomePage.svg";
 import preCarouselImg from "../../images/preCarouselHomePage.svg";
-import { TypedFeaturedProductsQuery } from "./queries";
+import { TypedFeaturedProductsQuery } from "../ProductsFeatured/queries";
 
 import "./scss/index.scss";
 
