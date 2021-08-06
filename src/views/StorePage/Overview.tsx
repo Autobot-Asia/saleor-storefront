@@ -5,6 +5,7 @@ import { channelSlug } from "@temp/constants";
 import Avatar from "../../images/avatar.svg";
 import Chat from "../../images/chat.svg";
 import Clock from "../../images/clock.svg";
+import nextCarouselImg from "../../images/nextCarouselHomePage.svg";
 import Star from "../../images/star.svg";
 import Store from "../../images/store.svg";
 import { ListProductType } from "./Page";
@@ -104,6 +105,9 @@ const Overview: React.FC<{}> = () => (
                 title="Sản phẩm nổi bật"
                 listProduct={listMainProduct}
               />
+              <div className="card-product-nextCarousel">
+                <img src={nextCarouselImg} alt="" />
+              </div>
             </div>
 
             <div className="card-product-overview-discount">
@@ -111,6 +115,9 @@ const Overview: React.FC<{}> = () => (
                 title="Sản phẩm giảm giá"
                 listProduct={listMainProduct}
               />
+              <div className="card-product-nextCarousel">
+                <img src={nextCarouselImg} alt="" />
+              </div>
             </div>
 
             <div className="card-product-overview-discount">
@@ -118,6 +125,9 @@ const Overview: React.FC<{}> = () => (
                 title="Tất cả sản phẩm"
                 listProduct={listMainProduct}
               />
+              <div className="card-product-watchAll">
+                <a>Xem tất cả &gt;</a>
+              </div>
             </div>
           </>
         );
