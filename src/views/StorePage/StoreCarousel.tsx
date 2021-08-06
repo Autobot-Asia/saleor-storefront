@@ -92,11 +92,13 @@ const StoreCarousel: React.FC = () => {
               <span>HappyFarmer@gmail.com</span>
             </div>
             <div className="store_contact_phoneNumber store_contact_text">
-              <img
-                src={StoreContactPhoneNumber}
-                alt="Phone"
-                className="store_contact_icon"
-              />
+              <div>
+                <img
+                  src={StoreContactPhoneNumber}
+                  alt="Phone"
+                  className="store_contact_icon"
+                />
+              </div>
               <span>0962.426.624</span>
             </div>
             <div className="store_contact_address store_contact_text">
@@ -123,7 +125,7 @@ const StoreCarousel: React.FC = () => {
           </div>
         </div>
         <div className="store_profile_bottom">
-          <Tabs>
+          <Tabs className="store_profile_tabs">
             <TabTitle
               active={activeTab === TABS.DESCRIPTION}
               onClick={evt => {
