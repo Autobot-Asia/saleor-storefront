@@ -101,12 +101,10 @@ const StoreCarousel: React.FC = () => {
             </div>
             <div className="store_contact_address store_contact_text">
               <div style={{ display: "flex" }}>
-                <img
-                  src={StoreCoverAddress}
-                  alt="Address"
-                  className="store_contact_icon"
-                />
-                <span>
+                <div className="address">
+                  <img src={StoreCoverAddress} alt="Address" />
+                </div>
+                <span className="store_contact_location">
                   Học viện Nông nghiệp Việt Nam ở xã Trâu Quỳ,
                   <br /> huyện Gia Lâm, thành phố Hà Nội.
                 </span>
