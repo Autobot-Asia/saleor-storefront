@@ -11,7 +11,7 @@ export const Loader = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 17px;
+  padding: 20px 19px 0;
   margin: 70px 0;
   display: grid;
 

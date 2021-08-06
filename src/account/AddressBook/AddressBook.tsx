@@ -57,7 +57,6 @@ const AddressBook: React.FC<{
     },
   });
   const intl = useIntl();
-
   const userAddresses = user.addresses.map(address => {
     const addressToDisplay: any = { address: { ...address } };
 

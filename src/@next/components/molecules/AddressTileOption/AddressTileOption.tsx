@@ -2,6 +2,8 @@ import React from "react";
 
 import { Address } from "@components/atoms";
 
+import Delete from "../../../../images/delete.svg";
+import Edit from "../../../../images/edit.svg";
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -25,6 +27,8 @@ const AddressTileOption: React.FC<IProps> = ({
       }
       data-test-id={id}
     >
+      <S.Edit src={Edit} />
+      <S.Delete src={Delete} />
       <Address {...address} />
       <S.Input
         {...props}
