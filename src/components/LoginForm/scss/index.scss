@@ -133,6 +133,9 @@
       color: #bfbfbf;
       opacity: 1;
     }
+    .input__field {
+      height: 45px;
+    }
   }
 }
 .login-form-password {
@@ -157,6 +160,9 @@
       letter-spacing: 0.4px;
       color: #bfbfbf;
       opacity: 1;
+    }
+    .input__field {
+      height: 45px;
     }
   }
 }

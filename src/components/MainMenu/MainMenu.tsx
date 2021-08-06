@@ -350,7 +350,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                 )
                               }
                             >
-                              <ReactSVG path={userImg} />
+                              <Link href={paths.login}>
+                                <ReactSVG path={userImg} />
+                              </Link>
                             </li>
                           )}
                         </>

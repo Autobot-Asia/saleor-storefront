@@ -64,7 +64,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
           </div>
 
           <div className="login-form-password">
-            <p className="password">Mật khẩu:</p>
+            <p className="password">Mật khẩu</p>
             <div className="password-input">
               <TextField
                 name="password"
