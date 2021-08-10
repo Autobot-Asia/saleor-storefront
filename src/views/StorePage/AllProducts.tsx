@@ -50,7 +50,10 @@ const AllProducts: React.FC<{}> = () => {
               <div className="all-product-category">
                 <div className="all-product-category-1">
                   <div className="item-product-category">
-                    <input type="checkbox" className="cb-category" />
+                    <div className="checkbox-wrapper">
+                      <input type="checkbox" className="cb-category" />
+                      <span className="checkmark" />
+                    </div>
                     <span>Hoa Quả Nhập Khẩu</span>
                   </div>
                   <div className="item-product-category">

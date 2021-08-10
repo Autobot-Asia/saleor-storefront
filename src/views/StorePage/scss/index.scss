@@ -15,10 +15,16 @@
   .card-all-product-container {
     margin: 0px 156px 20px 32px;
     span {
+      display: inline-block;
+      margin-bottom: 8px;
       font: normal normal bold 14px/15px Arial;
       letter-spacing: 0.28px;
       color: #000000;
       opacity: 1;
+    }
+    > span {
+      display: inline-block;
+      margin-bottom: 8px;
     }
     .all-product-category {
       display: flex;
@@ -111,11 +117,28 @@
     display: flex;
     margin: 8px 0px 10px 0px;
     .cb-category {
-      width: 18px;
-      height: 18px;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
       margin-right: 10px;
+      border: 1px solid $mainColorHeader;
+      position: relative;
+      &:checked {
+        background-color: $mainColorHeader;
+        color: #fff;
+        width: 16px;
+        height: 16px;
+      }
+      &:checked::after {
+        content: "\2714";
+        font-size: 16px;
+        position: absolute;
+        top: -4px;
+        left: 0.5px;
+        color: #fff;
+      }
     }
-    span {
+    & > span {
       text-align: left;
       font: normal normal normal 15px/22px Arial;
       letter-spacing: 0.3px;
@@ -521,11 +544,17 @@
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
   position: relative;
+
   .store_profile_bottom {
     margin-left: 42px;
     .store_profile_tabs {
       position: absolute;
       bottom: 0;
+      & > div {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
     }
   }
   .store_profile_top {

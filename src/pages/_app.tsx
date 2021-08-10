@@ -26,7 +26,7 @@ import {
   ssrMode,
 } from "../constants";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 if (!ssrMode) {
   window.version = version;
