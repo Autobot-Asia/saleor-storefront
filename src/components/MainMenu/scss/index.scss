@@ -11,7 +11,8 @@
   background-color: $mainColorHeader;
   // border: 5px solid $mainColorHeader;
   .container-main-menu {
-    width: 1280px;
+    // width: 1280px;
+    width: 1242px;
     margin: 0 auto;
   }
 }
@@ -27,13 +28,13 @@
   align-items: center;
   // grid-template-columns: 1fr;
   // grid-gap: 1rem;
-  padding: 1rem 40px;
+  // padding: 1rem 40px;
   justify-items: center;
   // padding-bottom: 22px;
   @media (min-width: $small-screen) {
     // grid-template-columns: 2fr 8fr 1.8fr;
     height: 70px;
-    padding: 0.5rem 19px;
+    // padding: 0.5rem 19px;
     justify-items: normal;
   }
   &__wrapper-icon {
