@@ -45,6 +45,7 @@ export const Title = styled.div`
   padding: 15px 20px 7.5px;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   margin: 0;
   font-size: ${props => props.theme.typography.h3FontSize};
   text-transform: capitalize;
@@ -57,6 +58,10 @@ export const Title = styled.div`
   `}
   img {
     margin-right: 10px;
+    width: 23px;
+    height: 19px;
+    position: relative;
+    top: -2px;
   }
   p {
     color: ${props => props.theme.colors.mainColor};
@@ -80,6 +85,7 @@ export const CostLine = styled.div<{ last: boolean }>`
   margin-top: ${props => props.theme.spacing.spacer};
   span {
     display: inline-block;
+    font: normal normal bold 18px/22px Arial;
   }
   font-weight: ${props =>
     props.last ? props.theme.productItem.productItemPriceFontWeight : "normal"};

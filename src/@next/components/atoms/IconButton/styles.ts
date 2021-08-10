@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   padding: 0;
   margin: 0;
+  /* padding-right: 14px; */
   cursor: pointer;
 
   width: ${props => `${props.theme.iconButton.size}px`};
@@ -24,12 +25,12 @@ export const Wrapper = styled.div`
     }
   }
 
-  :hover {
+  /* :hover {
     background-color: ${props => props.theme.iconButton.hoverBackgroundColor};
     svg {
       path {
         fill: ${props => props.theme.iconButton.hoverForegroundColor};
       }
     }
-  }
+  } */
 `;

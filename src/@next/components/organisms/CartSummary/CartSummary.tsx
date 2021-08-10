@@ -50,7 +50,7 @@ const Costs = ({ subtotal, promoCode, shipping, total }: ICosts) => {
       )}
       {total && (
         <CostLine
-          name={intl.formatMessage(commonMessages.total)}
+          name={`${intl.formatMessage(commonMessages.total)}:`}
           cost={total}
           last
         />

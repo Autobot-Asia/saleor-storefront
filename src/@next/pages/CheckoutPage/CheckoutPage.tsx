@@ -5,7 +5,11 @@ import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Button, Loader, Redirect } from "@components/atoms";
+import {
+  // Button,
+  Loader,
+  Redirect,
+} from "@components/atoms";
 import { CheckoutProgressBar } from "@components/molecules";
 import {
   adyenNotNegativeConfirmationStatusCodes,
@@ -27,7 +31,7 @@ import {
   CHECKOUT_STEPS,
   CheckoutStep,
   getAvailableSteps,
-  getContinueButtonText,
+  // getContinueButtonText,
   getCurrentStep,
   prepareCartSummaryProducts,
   stepSubmitSuccessHandler,
@@ -81,7 +85,7 @@ const CheckoutPage: React.FC<NextPage> = () => {
     steps,
     activeStepIndex
   );
-  const buttonText = getContinueButtonText(activeStep.step);
+  // const buttonText = getContinueButtonText(activeStep.step);
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
       ? { gross: shippingPrice, net: shippingPrice }
@@ -298,19 +302,19 @@ const CheckoutPage: React.FC<NextPage> = () => {
       checkout={isFullyLoaded ? checkoutSubpage : <Loader />}
       paymentGateways={paymentGateways}
       hidePaymentGateways={steps[activeStepIndex].step !== CheckoutStep.Payment}
-      button={
-        cartLoaded &&
-        buttonText && (
-          <Button
-            testingContext="checkoutPageNextStepButton"
-            onClick={() => pageCompleteRef.current?.()}
-            type="submit"
-            disabled={!isFullyLoaded || submitInProgress}
-          >
-            {buttonText}
-          </Button>
-        )
-      }
+      // button={
+      //   cartLoaded &&
+      //   buttonText && (
+      //     <Button
+      //       testingContext="checkoutPageNextStepButton"
+      //       onClick={() => pageCompleteRef.current?.()}
+      //       type="submit"
+      //       disabled={!isFullyLoaded || submitInProgress}
+      //     >
+      //       {buttonText}
+      //     </Button>
+      //   )
+      // }
     />
   );
 };
