@@ -6,7 +6,8 @@ import { checkoutMessages } from "@temp/intl";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
 import deliveryAddress from "../../../../images/deliveryAddress.svg";
-import invoice from "../../../../images/invoice.svg";
+// import invoice from "../../../../images/invoice.svg";
+import location from "../../../../images/location.svg";
 import { AddressForm } from "../AddressForm";
 import { AddressGridSelector } from "../AddressGridSelector";
 import * as S from "./styles";
@@ -83,7 +84,7 @@ const CheckoutAddress: React.FC<IProps> = ({
         </>
       )}
       <section>
-        {shippingAddressRequired && (
+        {/* {shippingAddressRequired && (
           <Checkbox
             data-test="checkoutAddressBillingAsShippingCheckbox"
             name="billing-same-as-shipping"
@@ -94,10 +95,14 @@ const CheckoutAddress: React.FC<IProps> = ({
           >
             <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
           </Checkbox>
-        )}
-        <S.Title data-test="checkoutPageSubtitle">
+        )} */}
+        {/* <S.Title data-test="checkoutPageSubtitle">
           <img src={invoice} alt="" />
           <FormattedMessage {...checkoutMessages.infoInvoice} />
+        </S.Title> */}
+        <S.Title data-test="checkoutPageSubtitle">
+          <img src={location} alt="" />
+          <FormattedMessage {...checkoutMessages.deliveryAddress} />
         </S.Title>
         {!billingAsShippingAddress && (
           <>
@@ -133,6 +138,30 @@ const CheckoutAddress: React.FC<IProps> = ({
             )}
           </>
         )}
+        {/* {shippingAddressRequired && (
+          <Checkbox
+            data-test="checkoutAddressBillingAsShippingCheckbox"
+            name="billing-same-as-shipping"
+            checked={billingAsShippingAddress}
+            onChange={() =>
+              setBillingAsShippingAddress(!billingAsShippingAddress)
+            }
+          >
+            <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
+          </Checkbox>
+        )} */}
+        <div style={{ marginTop: "18px" }}>
+          <Checkbox
+            data-test="checkoutAddressBillingAsShippingCheckbox"
+            name="billing-same-as-shipping"
+            checked={billingAsShippingAddress}
+            onChange={() =>
+              setBillingAsShippingAddress(!billingAsShippingAddress)
+            }
+          >
+            <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
+          </Checkbox>
+        </div>
       </section>
     </S.Wrapper>
   );

@@ -11,12 +11,14 @@ export const Wrapper = styled.div<WrapperProps>`
   background-color: ${props => props.theme.tile.backgroundColor};
   border: 1px transparent solid;
   overflow: auto;
-  height: 100%;
+  /* height: 100%; */
   padding: 0;
   transition: all 0.3s, color 0s, fill 0s;
-
+  height: 150px;
+  width: 266px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  justify-content: space-between;
   align-items: left;
   ${props => {
     if (props.tileType === "hover") {
@@ -55,11 +57,20 @@ export const Header = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 1rem 1.25rem;
+  padding: 12px 14px;
 `;
 
 export const Footer = styled.div`
-  margin-top: auto;
+  /* margin-top: auto;
   padding: 0 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;

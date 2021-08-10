@@ -8,11 +8,15 @@ export const Divider = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-weight: capitalize;
+  /* font-weight: capitalize; */
   padding: 0 0 15px 0;
-  font-size: 20px;
+  /* font-size: 20px; */
   letter-spacing: 0.4px;
   color: ${props => props.theme.colors.mainColor};
+  font: normal normal normal 20px/15px Arial;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
   img {
     margin-right: 10px;
   }
