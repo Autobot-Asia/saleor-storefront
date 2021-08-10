@@ -5,4 +5,6 @@ export interface IProps {
   cartFooter?: React.ReactNode;
   cart?: React.ReactNode;
   button?: React.ReactNode;
+  totalQuantity?: number;
+  onDeleteAllProduct?: () => void;
 }
