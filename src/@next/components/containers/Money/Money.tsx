@@ -10,16 +10,14 @@ export const Money: React.FC<IProps> = ({
   if (!money) {
     return <span {...props}>{defaultValue}</span>;
   }
-  const { amount, currency } = money;
   return (
     <span {...props}>
-      {/* {money.currency && money.currency !== ""
+      {money.currency && money.currency !== ""
         ? money.amount.toLocaleString(process.env.LANGUAGE_LOCALE, {
             currency: money.currency,
             style: "currency",
           })
-        : money.amount.toString()} */}
-      {amount} {currency}
+        : money.amount.toString()}
     </span>
   );
 };
