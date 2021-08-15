@@ -1,10 +1,9 @@
-/* eslint-disable no-return-assign */
 import { useAuth, useCart, useCheckout } from "@saleor/sdk";
 import { IItems } from "@saleor/sdk/lib/api/Cart/types";
 import { UserDetails_me } from "@saleor/sdk/lib/queries/gqlTypes/UserDetails";
 import { NextPage } from "next";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 
 import { Button, CartFooter, CartHeader } from "@components/atoms";
@@ -16,9 +15,9 @@ import { checkoutMessages } from "@temp/intl";
 import { ITaxedMoney } from "@types";
 
 const title = (
-  <h2 data-test="cartPageTitle">
-    <FormattedMessage defaultMessage="Giỏ Hàng" />
-  </h2>
+  <h1 data-test="cartPageTitle">
+    <FormattedMessage defaultMessage="My Cart" />
+  </h1>
 );
 
 const getShoppingButton = () => (
@@ -31,10 +30,9 @@ const getShoppingButton = () => (
 
 const getCheckoutButton = (user?: UserDetails_me | null) => (
   <Link href={user ? paths.checkout : paths.login}>
-    {/* <Button testingContext="proceedToCheckoutButton">
-      <FormattedMessage defaultMessage="Mua Hàng" />
-    </Button> */}
-    <div className="btn btn-success w-100">Mua hàng</div>
+    <Button testingContext="proceedToCheckoutButton">
+      <FormattedMessage defaultMessage="PROCEED TO CHECKOUT" />
+    </Button>
   </Link>
 );
 
@@ -95,16 +93,7 @@ const generateCart = (
   ));
 };
 
-const productQuantity = (items: IItems) => {
-  let quantity: number = 0;
-  items?.map(item => {
-    return (quantity += item.quantity);
-  });
-  return quantity;
-};
-
 export const CartPage: React.FC<NextPage> = () => {
-  const [totalQuantity, setTotalQuantity] = useState<number>(0);
   const { user } = useAuth();
   const { checkout } = useCheckout();
   const {
@@ -117,16 +106,6 @@ export const CartPage: React.FC<NextPage> = () => {
     shippingPrice,
     discount,
   } = useCart();
-
-  useEffect(() => {
-    setTotalQuantity(productQuantity(items));
-  }, [items]);
-
-  const onDeleteAllProduct = () => {
-    items?.map(item => {
-      return removeItem(item.variant.id);
-    });
-  };
 
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
@@ -153,8 +132,6 @@ export const CartPage: React.FC<NextPage> = () => {
           subtotalPrice
         )}
         cart={items && generateCart(items, removeItem, updateItem)}
-        totalQuantity={totalQuantity}
-        onDeleteAllProduct={onDeleteAllProduct}
       />
     );
   }

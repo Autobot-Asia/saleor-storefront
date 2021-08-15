@@ -47,7 +47,7 @@ const Page: React.FC<{
           // withoutControls={true}
           wrapAround
           slidesToShow={1}
-          speed={3000}
+          speed={1000}
           renderCenterLeftControls={({ previousSlide, currentSlide }) => (
             <button
               style={{

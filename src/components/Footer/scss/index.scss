@@ -3,11 +3,22 @@
 .footer {
   background-color: $white;
   color: black;
-  width: 100vw;
+  // padding: 0 19px;
+  width: 100%;
   margin: 0 auto;
-  .container {
-    width: 1280px;
-    padding: 0 19px;
+
+  .footer__copyright {
+    width: 1240px;
+    margin: 0 auto;
+  }
+  .footer-siteMap {
+    width: 1240px;
+    margin: 0 auto;
+    border-bottom: 1px solid #cccbcb;
+  }
+  .footer__favicons {
+    width: 1240px;
+    margin: 40px auto 20px;
   }
   &-email {
     margin-left: 33px;
