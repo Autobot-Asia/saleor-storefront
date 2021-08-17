@@ -70,7 +70,7 @@ export const Text = styled.span<{ size: Size }>`
     theme: {
       button: { typography },
     },
-  }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
+  }) => fontSize(typography.smallFontSize, typography.smallFontSize)[size]};
   text-transform: capitalize;
   line-height: ${props => props.theme.typography.baseFontSize};
 `;

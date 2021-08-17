@@ -307,7 +307,7 @@ export const Header = styled.div`
     position: absolute;
     bottom: 0px;
     left: -12px;
-    width: 1280px;
+    width: 1242px;
     height: 0.3px;
     background-color: #32323236;
   }

@@ -15,6 +15,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Column = styled.div`
+  &:nth-child(4) {
+    padding-left: 6px;
+  }
+  &:nth-child(5) {
+    padding-left: 12px;
+  }
   padding: 12px 0;
   .aiSHW {
     margin-bottom: 0px;
