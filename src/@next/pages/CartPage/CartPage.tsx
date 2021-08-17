@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import { useAuth, useCart, useCheckout } from "@saleor/sdk";
 import { IItems } from "@saleor/sdk/lib/api/Cart/types";
 import { UserDetails_me } from "@saleor/sdk/lib/queries/gqlTypes/UserDetails";
@@ -16,7 +17,7 @@ import { ITaxedMoney } from "@types";
 
 const title = (
   <h1 data-test="cartPageTitle">
-    <FormattedMessage defaultMessage="My Cart" />
+    <FormattedMessage defaultMessage="Giỏ hàng" />
   </h1>
 );
 
@@ -31,26 +32,12 @@ const getShoppingButton = () => (
 const getCheckoutButton = (user?: UserDetails_me | null) => (
   <Link href={user ? paths.checkout : paths.login}>
     <Button testingContext="proceedToCheckoutButton">
-      <FormattedMessage defaultMessage="PROCEED TO CHECKOUT" />
+      <FormattedMessage defaultMessage="Mua Hàng" />
     </Button>
   </Link>
 );
 
 const cartHeader = <CartHeader />;
-
-const prepareCartFooter = (
-  totalPrice?: ITaxedMoney | null,
-  shippingTaxedPrice?: ITaxedMoney | null,
-  promoTaxedPrice?: ITaxedMoney | null,
-  subtotalPrice?: ITaxedMoney | null
-) => (
-  <CartFooter
-    subtotalPrice={subtotalPrice}
-    totalPrice={totalPrice}
-    shippingPrice={shippingTaxedPrice}
-    discountPrice={promoTaxedPrice}
-  />
-);
 
 const generateCart = (
   items: IItems,
@@ -93,7 +80,16 @@ const generateCart = (
   ));
 };
 
+// const productQuantity = (items: IItems) => {
+//   let quantity: number = 0;
+//   items?.map(item => {
+//     return (quantity += item.quantity);
+//   });
+//   return quantity;
+// };
+
 export const CartPage: React.FC<NextPage> = () => {
+  // const [totalQuantity, setTotalQuantity] = useState<number>(0);
   const { user } = useAuth();
   const { checkout } = useCheckout();
   const {
@@ -106,6 +102,35 @@ export const CartPage: React.FC<NextPage> = () => {
     shippingPrice,
     discount,
   } = useCart();
+
+  // useEffect(() => {
+  //   setTotalQuantity(productQuantity(items));
+  // }, [items]);
+
+  const onDeleteAllProduct = () => {
+    items?.map(item => {
+      return removeItem(item.variant.id);
+    });
+  };
+  const button = getCheckoutButton(user);
+
+  const prepareCartFooter = (
+    totalPrice?: ITaxedMoney | null,
+    shippingTaxedPrice?: ITaxedMoney | null,
+    promoTaxedPrice?: ITaxedMoney | null,
+    subtotalPrice?: ITaxedMoney | null,
+    onDeleteAllProduct?: () => void,
+    button?: React.ReactNode
+  ) => (
+    <CartFooter
+      subtotalPrice={subtotalPrice}
+      totalPrice={totalPrice}
+      shippingPrice={shippingTaxedPrice}
+      discountPrice={promoTaxedPrice}
+      onDeleteAllProduct={onDeleteAllProduct}
+      button={button}
+    />
+  );
 
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
@@ -123,13 +148,14 @@ export const CartPage: React.FC<NextPage> = () => {
     return (
       <Cart
         title={title}
-        button={getCheckoutButton(user)}
         cartHeader={cartHeader}
         cartFooter={prepareCartFooter(
           totalPrice,
           shippingTaxedPrice,
           promoTaxedPrice,
-          subtotalPrice
+          subtotalPrice,
+          onDeleteAllProduct,
+          button
         )}
         cart={items && generateCart(items, removeItem, updateItem)}
       />

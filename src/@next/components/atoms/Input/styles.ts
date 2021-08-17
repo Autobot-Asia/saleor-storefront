@@ -30,19 +30,10 @@ const getEdgeColor = (
 
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
-  border: 1px solid ${props => getEdgeColor(props)};
+  border: 0.30000001192092896px solid #70707070;
   color: ${props => getEdgeColor(props)};
-  outline: ${props =>
-    props.active ? `1px solid ${getEdgeColor(props)};` : "none"};
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: ${props => getEdgeColor(props, true)};
-    outline-width: ${props => (props.disabled ? 0 : 1)}px;
-    outline-style: solid;
-    border-color: ${props => getEdgeColor(props, true)};
-    outline-color: ${props => getEdgeColor(props, true)};
-  }
+  width: min-content;
+  height: 26px;
 `;
 
 export const Content = styled.span`
@@ -52,15 +43,21 @@ export const Content = styled.span`
 
 export const InputWrapper = styled.div`
   position: relative;
-  width: 100%;
+  min-width: 34px;
+  height: 25px;
 `;
 
 export const Input = styled.input<{ labelBackground: string | null }>`
-  padding: 0.8rem 1rem;
-  margin: 0;
   border: none;
+  border-left: 0.30000001192092896px solid #70707070;
+  border-right: 0.30000001192092896px solid #70707070;
+  overflow: hidden;
+  margin: 0;
+  padding-left: 3px;
+  text-align: center;
   width: 100%;
-  font-size: ${props => props.theme.typography.baseFontSize};
+  height: 100%;
+  font-size: ${props => props.theme.typography.smallFontSize};
   outline: none;
   background-color: transparent;
   &:-webkit-autofill {

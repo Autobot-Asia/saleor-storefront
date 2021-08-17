@@ -1,6 +1,15 @@
 import { defineMessages, IntlShape } from "react-intl";
 
 export const commonMessages = defineMessages({
+  productName: {
+    defaultMessage: "Tên sản phẩm",
+  },
+  optionTypes: {
+    defaultMessage: "Phân loại",
+  },
+  unitPrice: {
+    defaultMessage: "Đơn giá",
+  },
   country: {
     defaultMessage: "Country",
   },
@@ -110,10 +119,10 @@ export const commonMessages = defineMessages({
     defaultMessage: "Promo code",
   },
   total: {
-    defaultMessage: "Tạm tính",
+    defaultMessage: "Tạm tính:",
   },
   totalPrice: {
-    defaultMessage: "Total Price",
+    defaultMessage: "Tổng tiền",
   },
   checkout: {
     defaultMessage: "Checkout",

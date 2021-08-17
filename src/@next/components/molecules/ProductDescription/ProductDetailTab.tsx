@@ -77,7 +77,6 @@ export const ProductDetailTab: React.FC<Props> = ({ description, product }) => {
     },
     { title: "Model Number", value: "1" },
   ];
-  // console.log("product", product);
 
   const populateBreadcrumbs = (product: any) => [
     {

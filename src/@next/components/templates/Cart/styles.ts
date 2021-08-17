@@ -8,7 +8,14 @@ export const Breadcrumbs = styled.div``;
 
 export const Title = styled.div`
   margin-top: 80px;
-  margin-bottom: 60px;
+  margin-bottom: 15px;
+  h1 {
+    color: ${props => props.theme.colors.mainColor};
+    font: normal normal normal Arial !important;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    text-transform: capitalize;
+  }
 `;
 
 export const CartHeader = styled.div`
