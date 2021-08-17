@@ -71,7 +71,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           const productVariantsAttribute =
             productVariantsAttributes[productVariantsAttributeId];
           const { slug } = productVariantsAttribute.attribute;
-
           return (
             <ProductVariantAttributeSelect
               key={productVariantsAttributeId}
@@ -97,5 +96,4 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     </S.Wrapper>
   );
 };
-ProductVariantPicker.displayName = "ProductVariantPicker";
 export default ProductVariantPicker;
