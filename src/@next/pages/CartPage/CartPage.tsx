@@ -15,6 +15,10 @@ import { paths } from "@paths";
 import { checkoutMessages } from "@temp/intl";
 import { ITaxedMoney } from "@types";
 
+import ProductsSuggest from "../../../components/ProductsSuggest";
+
+import "./scss/index.scss";
+
 const title = (
   <h1 data-test="cartPageTitle">
     <FormattedMessage defaultMessage="Giỏ hàng" />
@@ -146,19 +150,24 @@ export const CartPage: React.FC<NextPage> = () => {
 
   if (loaded && items?.length) {
     return (
-      <Cart
-        title={title}
-        cartHeader={cartHeader}
-        cartFooter={prepareCartFooter(
-          totalPrice,
-          shippingTaxedPrice,
-          promoTaxedPrice,
-          subtotalPrice,
-          onDeleteAllProduct,
-          button
-        )}
-        cart={items && generateCart(items, removeItem, updateItem)}
-      />
+      <>
+        <Cart
+          title={title}
+          cartHeader={cartHeader}
+          cartFooter={prepareCartFooter(
+            totalPrice,
+            shippingTaxedPrice,
+            promoTaxedPrice,
+            subtotalPrice,
+            onDeleteAllProduct,
+            button
+          )}
+          cart={items && generateCart(items, removeItem, updateItem)}
+        />
+        <div className="productsSuggest">
+          <ProductsSuggest />
+        </div>
+      </>
     );
   }
   return <CartEmpty button={getShoppingButton()} />;
