@@ -70,7 +70,7 @@ export const AddressTile: React.FC<IProps> = ({
           testingContext="editButton"
           name="edit"
           onClick={onEdit}
-          size={36}
+          size={30}
         />
       </div>
       <div>
@@ -78,7 +78,7 @@ export const AddressTile: React.FC<IProps> = ({
           testingContext="removeButton"
           name="trash"
           onClick={onRemove}
-          size={24}
+          size={20}
         />
       </div>
     </S.FooterContent>

@@ -21,3 +21,20 @@ export const Title = styled.h3`
     margin-right: 10px;
   }
 `;
+
+export const CheckboxAddress = styled.div`
+  margin-top: 18px;
+  margin-bottom: 23px;
+  .aiSHW {
+    width: fit-content;
+    margin-bottom: 0px;
+  }
+  .hhhOMr div {
+    height: 14px;
+    width: 14px;
+    span {
+      width: 10px;
+      height: 10px;
+    }
+  }
+`;

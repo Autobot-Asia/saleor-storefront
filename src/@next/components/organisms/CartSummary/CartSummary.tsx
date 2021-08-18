@@ -101,7 +101,9 @@ const CartSummary: React.FC<CartSummaryProps> = ({
               </div>
             ))}
           </S.CartSummaryProductList>
-          <S.ShowAll>Xem tất cả</S.ShowAll>
+          {products && products.length >= 7 && (
+            <S.ShowAll>Xem tất cả</S.ShowAll>
+          )}
           <S.HR />
           <Costs
             subtotal={subtotal}

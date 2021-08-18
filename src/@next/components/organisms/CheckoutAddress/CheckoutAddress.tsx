@@ -6,8 +6,7 @@ import { checkoutMessages } from "@temp/intl";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
 import deliveryAddress from "../../../../images/deliveryAddress.svg";
-// import invoice from "../../../../images/invoice.svg";
-import location from "../../../../images/location.svg";
+import invoice from "../../../../images/invoice.svg";
 import { AddressForm } from "../AddressForm";
 import { AddressGridSelector } from "../AddressGridSelector";
 import * as S from "./styles";
@@ -40,13 +39,13 @@ const CheckoutAddress: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <S.Wrapper>
+      <S.Title data-test="checkoutPageSubtitle">
+        <img src={deliveryAddress} alt="" />
+        <FormattedMessage {...checkoutMessages.deliveryAddress} />
+      </S.Title>
       {shippingAddressRequired && (
         <>
           <section>
-            <S.Title data-test="checkoutPageSubtitle">
-              <img src={deliveryAddress} alt="" />
-              {checkoutMessages.deliveryAddress.defaultMessage}
-            </S.Title>
             {userAddresses ? (
               <AddressGridSelector
                 testingContext="shipping"
@@ -84,27 +83,7 @@ const CheckoutAddress: React.FC<IProps> = ({
         </>
       )}
       <section>
-        {/* {shippingAddressRequired && (
-          <Checkbox
-            data-test="checkoutAddressBillingAsShippingCheckbox"
-            name="billing-same-as-shipping"
-            checked={billingAsShippingAddress}
-            onChange={() =>
-              setBillingAsShippingAddress(!billingAsShippingAddress)
-            }
-          >
-            <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
-          </Checkbox>
-        )} */}
-        {/* <S.Title data-test="checkoutPageSubtitle">
-          <img src={invoice} alt="" />
-          <FormattedMessage {...checkoutMessages.infoInvoice} />
-        </S.Title> */}
-        <S.Title data-test="checkoutPageSubtitle">
-          <img src={location} alt="" />
-          <FormattedMessage {...checkoutMessages.deliveryAddress} />
-        </S.Title>
-        {!billingAsShippingAddress && (
+        {true && (
           <>
             {shippingAddressRequired}
             {userAddresses ? (
@@ -138,7 +117,9 @@ const CheckoutAddress: React.FC<IProps> = ({
             )}
           </>
         )}
-        {/* {shippingAddressRequired && (
+      </section>
+      <section style={{ marginTop: 18 }}>
+        <S.CheckboxAddress>
           <Checkbox
             data-test="checkoutAddressBillingAsShippingCheckbox"
             name="billing-same-as-shipping"
@@ -149,19 +130,29 @@ const CheckoutAddress: React.FC<IProps> = ({
           >
             <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
           </Checkbox>
-        )} */}
-        <div style={{ marginTop: "18px" }}>
-          <Checkbox
-            data-test="checkoutAddressBillingAsShippingCheckbox"
-            name="billing-same-as-shipping"
-            checked={billingAsShippingAddress}
-            onChange={() =>
-              setBillingAsShippingAddress(!billingAsShippingAddress)
+        </S.CheckboxAddress>
+        <S.Title data-test="checkoutPageSubtitle">
+          <img src={invoice} alt="" />
+          <FormattedMessage {...checkoutMessages.infoInvoice} />
+        </S.Title>
+        {userAddresses && !billingAsShippingAddress ? (
+          <AddressGridSelector
+            testingContext="shipping"
+            formId={shippingFormId}
+            formRef={shippingFormRef}
+            addresses={userAddresses}
+            selectedAddressId={selectedUserShippingAddressId}
+            countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
+            userId={userId}
+            errors={shippingErrors}
+            onSelect={(address, id) =>
+              setShippingAddress(address, undefined, id)
             }
-          >
-            <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
-          </Checkbox>
-        </div>
+            newAddressFormId={newAddressFormId}
+          />
+        ) : (
+          ""
+        )}
       </section>
     </S.Wrapper>
   );

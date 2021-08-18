@@ -68,6 +68,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
   #__next {
     display: flex;
     min-height: 100vh;
+    min-width: 100vw;
     flex-direction: column;
 
     & > div:first-of-type {
