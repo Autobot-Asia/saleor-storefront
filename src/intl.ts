@@ -119,7 +119,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Promo code",
   },
   total: {
-    defaultMessage: "Tạm tính:",
+    defaultMessage: "Tạm tính",
   },
   totalPrice: {
     defaultMessage: "Tổng tiền",
