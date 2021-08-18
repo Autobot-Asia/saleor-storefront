@@ -1,7 +1,7 @@
 import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
-  margin: 30px 0 100px 0;
+  margin: 30px 0 0 0;
   padding: 0 19px;
 `;
 
@@ -30,5 +30,4 @@ export const Cart = styled.div`
 `;
 export const ProceedButton = styled.div`
   text-align: right;
-  margin-top: 40px;
 `;
