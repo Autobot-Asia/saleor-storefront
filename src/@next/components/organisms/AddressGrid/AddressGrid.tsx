@@ -42,8 +42,9 @@ export const AddressGrid: React.FC<IProps> = ({
     <S.ItemList>
       <Carousel
         style={{ width: "100%" }}
+        slidesToScroll={3}
         slidesToShow={3}
-        speed={300}
+        speed={1000}
         dragging={false}
         renderBottomCenterControls={null}
         cellSpacing={20}

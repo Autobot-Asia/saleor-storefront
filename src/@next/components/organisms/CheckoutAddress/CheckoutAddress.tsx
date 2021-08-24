@@ -82,7 +82,7 @@ const CheckoutAddress: React.FC<IProps> = ({
           <S.Divider />
         </>
       )}
-      <section>
+      {/* <section>
         {true && (
           <>
             {shippingAddressRequired}
@@ -117,7 +117,7 @@ const CheckoutAddress: React.FC<IProps> = ({
             )}
           </>
         )}
-      </section>
+      </section> */}
       <section style={{ marginTop: 18 }}>
         <S.CheckboxAddress>
           <Checkbox
@@ -135,7 +135,7 @@ const CheckoutAddress: React.FC<IProps> = ({
           <img src={invoice} alt="" />
           <FormattedMessage {...checkoutMessages.infoInvoice} />
         </S.Title>
-        {userAddresses && !billingAsShippingAddress ? (
+        {userAddresses && billingAsShippingAddress ? (
           <AddressGridSelector
             testingContext="shipping"
             formId={shippingFormId}
