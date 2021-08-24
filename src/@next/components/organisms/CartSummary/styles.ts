@@ -30,6 +30,8 @@ export const ProductLine = styled.div`
 
 export const CartSummaryProductList = styled.div`
   margin-bottom: 20px;
+  max-width: 550px;
+  overflow: auto;
 `;
 
 export const HR = styled.hr`

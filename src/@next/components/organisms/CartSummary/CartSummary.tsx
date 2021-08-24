@@ -10,6 +10,7 @@ import Trolley from "../../../../images/trolleyCheckout.svg";
 import * as S from "./styles";
 import { CartSummaryProps, ICostLine, ICosts } from "./types";
 
+const DEFAULT_MAX_PRODUCTS = 6;
 const CostLine = ({
   name,
   cost,
@@ -70,6 +71,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({
   products,
 }) => {
   const [mobileCartOpened, setMobileCartOpened] = useState(false);
+  const [activeShowMyCart, setActiveShowMyCart] = useState(false);
 
   return (
     <>
@@ -86,23 +88,42 @@ const CartSummary: React.FC<CartSummaryProps> = ({
         </S.Title>
         <S.Content>
           <S.CartSummaryProductList>
-            {products?.map((product, index) => (
-              <div key={product.sku}>
-                <S.ProductLine>
-                  <CartSummaryRow
-                    index={index}
-                    sku={product.sku}
-                    quantity={product.quantity}
-                    name={product.name}
-                    price={product.price}
-                    thumbnail={product.thumbnail}
-                  />
-                </S.ProductLine>
-              </div>
-            ))}
+            {!activeShowMyCart
+              ? products
+                  ?.filter((product, index) => index < DEFAULT_MAX_PRODUCTS)
+                  .map((product, index) => (
+                    <div key={product.sku}>
+                      <S.ProductLine>
+                        <CartSummaryRow
+                          index={index}
+                          sku={product.sku}
+                          quantity={product.quantity}
+                          name={product.name}
+                          price={product.price}
+                          thumbnail={product.thumbnail}
+                        />
+                      </S.ProductLine>
+                    </div>
+                  ))
+              : products?.map((product, index) => (
+                  <div key={product.sku}>
+                    <S.ProductLine>
+                      <CartSummaryRow
+                        index={index}
+                        sku={product.sku}
+                        quantity={product.quantity}
+                        name={product.name}
+                        price={product.price}
+                        thumbnail={product.thumbnail}
+                      />
+                    </S.ProductLine>
+                  </div>
+                ))}
           </S.CartSummaryProductList>
-          {products && products.length >= 7 && (
-            <S.ShowAll>Xem tất cả</S.ShowAll>
+          {products && products.length >= DEFAULT_MAX_PRODUCTS && (
+            <S.ShowAll onClick={() => setActiveShowMyCart(!activeShowMyCart)}>
+              {!activeShowMyCart ? "Xem tất cả" : "Thu gọn"}
+            </S.ShowAll>
           )}
           <S.HR />
           <Costs
