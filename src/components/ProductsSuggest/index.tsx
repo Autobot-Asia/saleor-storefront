@@ -30,7 +30,10 @@ const ProductsSuggest: React.FC<ProductsSuggestProps> = ({ title }) => {
         if (products.length) {
           return (
             <div className="products-featured">
-              <h3>Sản Phẩm Gợi Ý Cho Bạn</h3>
+              <div className="products-featured__header">
+                <h3>Sản Phẩm Gợi Ý Cho Bạn</h3>
+                <span>Xem tất cả</span>
+              </div>
               <div className="products-featured__container">
                 <div className="list__product" style={{ display: "unset" }}>
                   <Carousel
