@@ -20,21 +20,23 @@
     right: -23px;
     cursor: pointer;
   }
-
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background-color: $white;
+  }
   h3 {
     letter-spacing: 0.4px;
     text-transform: capitalize;
     opacity: 1;
     background-color: $white;
-    font: normal normal bold 20px/15px Arial;
+    font: normal normal bold Arial;
     padding-left: 15px !important;
-    padding-top: $spacer;
     font-weight: $bold-font-weight;
-    padding-bottom: $spacer;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    // font-size: 22px;
+    font-size: $base-line-height;
     color: #188c72;
     // &:after {
     //   content: "";

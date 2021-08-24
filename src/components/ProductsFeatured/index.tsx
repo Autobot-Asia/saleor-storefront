@@ -33,7 +33,9 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
           return (
             <>
               <div className="products-featured">
-                <h3>Sản Phẩm Mới</h3>
+                <div className="products-featured__header">
+                  <h3>Sản Phẩm Mới</h3>
+                </div>
                 <div className="products-featured__container">
                   <div className="list__product" style={{ display: "unset" }}>
                     <Carousel
@@ -90,7 +92,9 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
                 {/* <img className="icon-nextButton" src={nextButton} alt="" /> */}
               </div>
               <div className="products-featured">
-                <h3>Sản Phẩm Hot</h3>
+                <div className="products-featured__header">
+                  <h3>Sản Phẩm Hot</h3>
+                </div>
                 <div className="products-featured__container">
                   <div className="list__product" style={{ display: "unset" }}>
                     <Carousel
@@ -149,7 +153,9 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
 
               <div className="products-featured products-featured-sale">
                 <div className="products-featured__container">
-                  <h3>Sản Phẩm Giảm Giá</h3>
+                  <div className="products-featured__header">
+                    <h3>Sản Phẩm Giảm Giá</h3>
+                  </div>
                   <div
                     className="list__product list__product-sale"
                     style={{ display: "unset" }}
