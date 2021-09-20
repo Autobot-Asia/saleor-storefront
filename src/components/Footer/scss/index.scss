@@ -48,6 +48,8 @@
           background: #188c72;
           border: 1px solid #c6cad1;
           box-shadow: none;
+          min-width: 157px;
+          min-height: 50px;
           padding: 12px 20px;
           color: $white;
           span {
@@ -153,8 +155,8 @@
         .social-icon {
           padding: 0 0.3rem;
           svg {
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
           }
         }
       }
