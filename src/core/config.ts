@@ -69,7 +69,7 @@ export const META_DEFAULTS = {
   image: `${
     !ssrMode ? window.location.origin : ""
   }${require("../images/logo.svg")}`,
-  title: "Demo PWA Storefront – Saleor Commerce",
+  title: "Thachsanh",
   type: "website",
   url: !ssrMode ? window.location.origin : "",
 };
