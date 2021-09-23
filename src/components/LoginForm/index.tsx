@@ -58,6 +58,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
                 autoComplete="email"
                 label={intl.formatMessage(commonMessages.eMail)}
                 type="email"
+                pattern=".{0,254}"
                 // required
               />
             </div>
@@ -71,6 +72,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
                 autoComplete="password"
                 label={intl.formatMessage(commonMessages.password)}
                 type="password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                 // required
               />
             </div>
