@@ -15,18 +15,43 @@ class MenuDropdown extends React.Component<
     suffixClass: "",
   };
 
+  ref: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
     this.state = { active: false };
+    this.ref = React.createRef();
   }
+
+  componentDidMount() {
+    document.addEventListener("click", this.handleClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleClick);
+  }
+
+  handleClick = event => {
+    const { target } = event;
+    if (!this.ref.current.contains(target)) {
+      this.setState({ active: false });
+    }
+  };
+
+  toggleList = () => {
+    this.setState(prevState => ({
+      active: !prevState.active,
+    }));
+  };
 
   render() {
     return (
       <div
         data-test="userButton"
         className="menu-dropdown"
-        onMouseOver={() => this.setState({ active: true })}
-        onMouseLeave={() => this.setState({ active: false })}
+        onClick={this.toggleList.bind(this)}
+        onBlur={() => this.setState({ active: false })}
+        ref={this.ref}
       >
         {this.props.head}
 
