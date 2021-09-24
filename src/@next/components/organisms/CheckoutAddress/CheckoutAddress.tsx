@@ -43,45 +43,45 @@ const CheckoutAddress: React.FC<IProps> = ({
         <img src={deliveryAddress} alt="" />
         <FormattedMessage {...checkoutMessages.deliveryAddress} />
       </S.Title>
-      {shippingAddressRequired && (
-        <>
-          <section>
-            {userAddresses ? (
-              <AddressGridSelector
-                testingContext="shipping"
-                formId={shippingFormId}
-                formRef={shippingFormRef}
-                addresses={userAddresses}
-                selectedAddressId={selectedUserShippingAddressId}
-                countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
-                userId={userId}
-                errors={shippingErrors}
-                onSelect={(address, id) =>
-                  setShippingAddress(address, undefined, id)
-                }
-                newAddressFormId={newAddressFormId}
-              />
-            ) : (
-              <AddressForm
-                testingContext="shippingAddressForm"
-                formId={shippingFormId}
-                formRef={shippingFormRef}
-                countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
-                address={{
-                  ...checkoutShippingAddress,
-                  email,
-                }}
-                handleSubmit={address =>
-                  setShippingAddress(address, address?.email)
-                }
-                includeEmail
-                errors={shippingErrors}
-              />
-            )}
-          </section>
-          <S.Divider />
-        </>
-      )}
+      {/* {shippingAddressRequired && (
+        <> */}
+      <section>
+        {userAddresses ? (
+          <AddressGridSelector
+            testingContext="shipping"
+            formId={shippingFormId}
+            formRef={shippingFormRef}
+            addresses={userAddresses}
+            selectedAddressId={selectedUserShippingAddressId}
+            countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
+            userId={userId}
+            errors={shippingErrors}
+            onSelect={(address, id) =>
+              setShippingAddress(address, undefined, id)
+            }
+            newAddressFormId={newAddressFormId}
+          />
+        ) : (
+          <AddressForm
+            testingContext="shippingAddressForm"
+            formId={shippingFormId}
+            formRef={shippingFormRef}
+            countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
+            address={{
+              ...checkoutShippingAddress,
+              email,
+            }}
+            handleSubmit={address =>
+              setShippingAddress(address, address?.email)
+            }
+            includeEmail
+            errors={shippingErrors}
+          />
+        )}
+      </section>
+      <S.Divider />
+      {/* </> */}
+      {/* )} */}
       {/* <section>
         {true && (
           <>
