@@ -95,6 +95,7 @@ const CheckoutProgressBar: React.FC<IProps> = ({
   activeStep,
 }: IProps) => {
   const intl = useIntl();
+  console.log(steps);
   return <S.Wrapper>{generateSteps(steps, activeStep, intl)}</S.Wrapper>;
 };
 
