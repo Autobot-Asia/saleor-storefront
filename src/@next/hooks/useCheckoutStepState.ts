@@ -33,10 +33,10 @@ export const useCheckoutStepState = (
     //   return CheckoutStep.Address;
     // }
 
-    const isShippingAddressSet =
-      !isShippingRequiredForProducts || !!checkout?.shippingAddress;
+    // const isShippingAddressSet =
+    //   !isShippingRequiredForProducts || !!checkout?.shippingAddress;
 
-    const isBillingAddressSet = !!checkout?.billingAddress;
+    // const isBillingAddressSet = !!checkout?.billingAddress;
 
     const isShippingMethodSet =
       !isShippingRequiredForProducts || !!checkout?.shippingMethod;
