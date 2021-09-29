@@ -3,7 +3,7 @@ import { media, styled } from "@styles";
 import { Size } from "./types";
 
 const padding = {
-  md: "0.9rem 3.7rem",
+  md: "11px 57px",
   sm: "0.1rem 2rem",
 };
 
@@ -17,6 +17,7 @@ export const Primary = styled.button<{
   fullWidth?: boolean;
   size: Size;
 }>`
+  border-radius:5px;
   background-color: ${props =>
     props.theme.button.colors[props.color].background};
   padding: ${props => padding[props.size]};
@@ -69,8 +70,7 @@ export const Text = styled.span<{ size: Size }>`
     theme: {
       button: { typography },
     },
-  }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
-  text-transform: uppercase;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
-  line-height: ${props => props.theme.typography.baseLineHeight};
+  }) => fontSize(typography.smallFontSize, typography.smallFontSize)[size]};
+  text-transform: capitalize;
+  line-height: ${props => props.theme.typography.baseFontSize};
 `;

@@ -15,9 +15,9 @@ export const HeaderContent = styled.div`
 export const FooterContent = styled.div`
   > div {
     display: inline-block;
-    padding: 0;
+    padding: 12px 6px;
     margin: 0;
-    margin-right: 0.6rem;
+    /* margin-right: 0.6rem; */
   }
 `;
 

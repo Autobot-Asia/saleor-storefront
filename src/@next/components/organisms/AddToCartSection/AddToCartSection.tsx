@@ -6,10 +6,13 @@ import {
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
+import { Link } from "react-scroll";
 
 import { commonMessages } from "@temp/intl";
 import { IProductVariantsAttributesSelectedValues } from "@types";
 
+import disableAddToCart from "../../../../images/disableAddToCart.svg";
+import addProductDetail from "../../../../images/productDetailTrolley.svg";
 import AddToCartButton from "../../molecules/AddToCartButton";
 import QuantityInput from "../../molecules/QuantityInput";
 import ProductVariantPicker from "../ProductVariantPicker";
@@ -30,10 +33,13 @@ export interface IAddToCartSection {
   variantId: string;
   setVariantId(variantId: string): void;
   onAddToCart(variantId: string, quantity?: number): void;
+  onBuyNow(variantId: string, quantity?: number): void;
+  setCheckPrice(check: boolean): void;
   onAttributeChangeHandler(slug: string | null, value: string): void;
 }
 
 const AddToCartSection: React.FC<IAddToCartSection> = ({
+  setCheckPrice,
   availableForPurchase,
   isAvailableForPurchase,
   items,
@@ -41,13 +47,13 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   productPricing,
   productVariants,
   queryAttributes,
+  onBuyNow,
   onAddToCart,
   onAttributeChangeHandler,
   setVariantId,
   variantId,
 }) => {
   const intl = useIntl();
-
   const [quantity, setQuantity] = useState<number>(1);
   const [variantStock, setVariantStock] = useState<number>(0);
   const [
@@ -167,8 +173,29 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           testingContext="addToCartQuantity"
         />
       </S.QuantityInput>
+      <S.WrapperOptionBuy>
+        <S.BoxAddTrolley
+          isDisabled={disableButton}
+          onClick={
+            disableButton ? undefined : () => onAddToCart(variantId, quantity)
+          }
+        >
+          <img
+            style={{ marginRight: "11.5px" }}
+            src={disableButton ? disableAddToCart : addProductDetail}
+            alt=""
+          />
+          <span>Thêm vào giỏ hàng</span>
+        </S.BoxAddTrolley>
+        <Link to="price" spy smooth onClick={() => setCheckPrice(true)}>
+          <S.BoxQuote>
+            <span>Nhận báo giá </span>
+          </S.BoxQuote>
+        </Link>
+      </S.WrapperOptionBuy>
+
       <AddToCartButton
-        onSubmit={() => onAddToCart(variantId, quantity)}
+        onSubmit={() => onBuyNow(variantId, quantity)}
         disabled={disableButton}
       />
     </S.AddToCartSelection>

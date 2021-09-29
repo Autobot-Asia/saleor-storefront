@@ -2,22 +2,32 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
+import { ContactSupplier } from "../../../../views/Product/ContactSupplier";
 import { CompanyProfile } from "./CompanyProfile";
 import { ProductDetailTab } from "./ProductDetailTab";
 import * as S from "./styles";
 import { IProps } from "./types";
 
 enum TABS {
-  DESCRIPTION = "DESCRIPION",
+  DESCRIPTION = "DESCRIPTION",
   ATTRIBUTES = "ATTRIBUTES",
+  REVIEW = "REVIEW",
 }
 
 export const ProductDescription: React.FC<IProps> = ({
+  product,
   description,
   attributes,
   store,
+  checkPrice,
 }: IProps) => {
   const [activeTab, setActiveTab] = React.useState<TABS>(TABS.DESCRIPTION);
+
+  React.useEffect(() => {
+    if (checkPrice) {
+      setActiveTab(TABS.REVIEW);
+    }
+  }, [checkPrice]);
 
   return (
     <S.Wrapper>
@@ -29,7 +39,7 @@ export const ProductDescription: React.FC<IProps> = ({
             setActiveTab(TABS.DESCRIPTION);
           }}
         >
-          <FormattedMessage defaultMessage="Product Detail" />
+          <FormattedMessage defaultMessage="Thông tin chi tiết" />
         </S.TabTitle>
         <S.TabTitle
           active={activeTab === TABS.ATTRIBUTES}
@@ -38,11 +48,20 @@ export const ProductDescription: React.FC<IProps> = ({
             setActiveTab(TABS.ATTRIBUTES);
           }}
         >
-          <FormattedMessage defaultMessage="Company Profile" />
+          <FormattedMessage defaultMessage="Đánh giá sản phẩm" />
+        </S.TabTitle>
+        <S.TabTitle
+          active={activeTab === TABS.REVIEW}
+          onClick={evt => {
+            evt.stopPropagation();
+            setActiveTab(TABS.REVIEW);
+          }}
+        >
+          <FormattedMessage defaultMessage="Nhận báo giá" />
         </S.TabTitle>
       </S.Tabs>
       <S.WrapperContent hidden={activeTab !== TABS.DESCRIPTION}>
-        <ProductDetailTab description={description} />
+        <ProductDetailTab product={product} description={description} />
       </S.WrapperContent>
       <S.WrapperContent hidden={activeTab !== TABS.ATTRIBUTES}>
         {/* <S.AttributeList> */}
@@ -55,6 +74,9 @@ export const ProductDescription: React.FC<IProps> = ({
               ))} */}
         <CompanyProfile store={store} />
         {/* </S.AttributeList> */}
+      </S.WrapperContent>
+      <S.WrapperContent hidden={activeTab !== TABS.REVIEW}>
+        <ContactSupplier description={description} />
       </S.WrapperContent>
     </S.Wrapper>
   );

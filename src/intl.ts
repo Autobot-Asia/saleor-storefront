@@ -1,6 +1,15 @@
 import { defineMessages, IntlShape } from "react-intl";
 
 export const commonMessages = defineMessages({
+  productName: {
+    defaultMessage: "Tên sản phẩm",
+  },
+  optionTypes: {
+    defaultMessage: "Phân loại",
+  },
+  unitPrice: {
+    defaultMessage: "Đơn giá",
+  },
   country: {
     defaultMessage: "Country",
   },
@@ -83,16 +92,16 @@ export const commonMessages = defineMessages({
     defaultMessage: "Last Name",
   },
   password: {
-    defaultMessage: "Password",
+    defaultMessage: "Mật khẩu",
   },
   confirmPassword: {
     defaultMessage: "Confirm Password",
   },
   quantity: {
-    defaultMessage: "Quantity",
+    defaultMessage: "Số lượng",
   },
   sku: {
-    defaultMessage: "SKU",
+    defaultMessage: "Loại",
   },
   maxQtyIs: {
     defaultMessage: "Maximum quantity is {maxQuantity}",
@@ -110,16 +119,16 @@ export const commonMessages = defineMessages({
     defaultMessage: "Promo code",
   },
   total: {
-    defaultMessage: "Total",
+    defaultMessage: "Tạm tính",
   },
   totalPrice: {
-    defaultMessage: "Total Price",
+    defaultMessage: "Tổng tiền",
   },
   checkout: {
     defaultMessage: "Checkout",
   },
   eMail: {
-    defaultMessage: "Email address or member ID",
+    defaultMessage: "Email hoặc Số điện thoại",
   },
   shortEmail: {
     defaultMessage: "Email",
@@ -167,10 +176,10 @@ export const commonMessages = defineMessages({
     defaultMessage: "Cancel",
   },
   home: {
-    defaultMessage: "Home",
+    defaultMessage: "Thachsanh",
   },
   message: {
-    defaultMessage: "Message",
+    defaultMessage: "Nội dung",
   },
   quantityType: {
     defaultMessage: "Quantity Type",
@@ -179,16 +188,19 @@ export const commonMessages = defineMessages({
 
 export const checkoutMessages = defineMessages({
   stepNameAddress: {
-    defaultMessage: "Address",
+    defaultMessage: "Địa chỉ",
   },
   stepNameShipping: {
     defaultMessage: "Shipping",
   },
   stepNamePayment: {
-    defaultMessage: "Payment",
+    defaultMessage: "Thanh Toán",
   },
   stepNameReview: {
     defaultMessage: "Review",
+  },
+  stepNameCompleted: {
+    defaultMessage: "Hoàn thành",
   },
   addressNextActionName: {
     defaultMessage: "Continue to Shipping",
@@ -208,8 +220,8 @@ export const checkoutMessages = defineMessages({
   shippingMethod: {
     defaultMessage: "SHIPPING METHOD",
   },
-  billingAddress: {
-    defaultMessage: "BILLING ADDRESS",
+  infoInvoice: {
+    defaultMessage: "Thông tin hoá đơn",
   },
   paymentMethod: {
     defaultMessage: "PAYMENT METHOD",
@@ -222,6 +234,9 @@ export const checkoutMessages = defineMessages({
   },
   continueShopping: {
     defaultMessage: "CONTINUE SHOPPING",
+  },
+  deliveryAddress: {
+    defaultMessage: "Địa chỉ giao hàng",
   },
 });
 

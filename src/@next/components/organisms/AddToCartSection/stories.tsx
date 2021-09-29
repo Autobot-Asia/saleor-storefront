@@ -43,6 +43,8 @@ const DEFAULT_PROPS: IAddToCartSection = {
   setVariantId: variantId => undefined,
   variantId: "",
   onAddToCart: (variantId, quantity) => undefined,
+  setCheckPrice: (check: boolean) => undefined,
+  onBuyNow: (variantId, quantity) => undefined,
   onAttributeChangeHandler: (slug, value) => undefined,
   availableForPurchase: null,
   isAvailableForPurchase: null,

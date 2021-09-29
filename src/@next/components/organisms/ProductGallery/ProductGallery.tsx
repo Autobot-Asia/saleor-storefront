@@ -1,72 +1,75 @@
 import "./styles";
 
+// @ts-ignore
+import Carousel from "nuka-carousel";
 import React from "react";
 // @ts-ignore
 import ReactImageZoom from "react-image-zoom";
-import { useInView } from "react-intersection-observer";
 
-import { Icon } from "@components/atoms";
+// import { Icon } from "@components/atoms";
 import { CachedImage } from "@components/molecules";
 
+import nextCarouselImg from "../../../../images/nextCarouselHomePage.svg";
+import preCarouselImg from "../../../../images/preCarouselHomePage.svg";
 import { ListImageModal } from "../ListImageModal";
 import * as S from "./styles";
 import { IProps } from "./types";
 
-const MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS = 4;
+const MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS = 5;
 
 export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
   const [imageIndex, setImageIndex] = React.useState<number>(0);
   const [showModal, setShowModal] = React.useState<boolean>(false);
   const [listImage, setListImage] = React.useState<any>([]);
 
-  const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
+  // const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
 
-  React.useEffect(() => {
-    if (imageIndex >= images.length) {
-      setImageIndex(0);
-    }
-  }, [images]);
+  // React.useEffect(() => {
+  //   if (imageIndex >= images.length) {
+  //     setImageIndex(0);
+  //   }
+  // }, [images]);
 
-  const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
-  const topImageRef = React.useRef<HTMLDivElement | null>(null);
-  const [topImageIntersectionObserver, topImageInView] = useInView({
-    threshold: 0.5,
-  });
+  // const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
+  // const topImageRef = React.useRef<HTMLDivElement | null>(null);
+  // const [topImageIntersectionObserver, topImageInView] = useInView({
+  //   threshold: 0.5,
+  // });
 
-  const [bottomImageIntersectionObserver, bottomImageInView] = useInView({
-    threshold: 0.5,
-  });
+  // const [bottomImageIntersectionObserver, bottomImageInView] = useInView({
+  //   threshold: 0.5,
+  // });
 
-  const setBottomRef = React.useCallback(
-    node => {
-      bottomImageRef.current = node;
-      bottomImageIntersectionObserver(node);
-    },
-    [bottomImageIntersectionObserver]
-  );
+  // const setBottomRef = React.useCallback(
+  //   node => {
+  //     bottomImageRef.current = node;
+  //     bottomImageIntersectionObserver(node);
+  //   },
+  //   [bottomImageIntersectionObserver]
+  // );
 
-  const setTopRef = React.useCallback(
-    node => {
-      topImageRef.current = node;
-      topImageIntersectionObserver(node);
-    },
-    [topImageIntersectionObserver]
-  );
+  // const setTopRef = React.useCallback(
+  //   node => {
+  //     topImageRef.current = node;
+  //     topImageIntersectionObserver(node);
+  //   },
+  //   [topImageIntersectionObserver]
+  // );
 
-  const setIntersectionObserver = (index: number, lengthOfArray: number) => {
-    if (lengthOfArray > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS) {
-      if (index === 0) {
-        return setTopRef;
-      }
-      if (index === lengthOfArray - 1) {
-        return setBottomRef;
-      }
-    }
-  };
+  // const setIntersectionObserver = (index: number, lengthOfArray: number) => {
+  //   if (lengthOfArray > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS) {
+  //     if (index === 0) {
+  //       return setTopRef;
+  //     }
+  //     if (index === lengthOfArray - 1) {
+  //       return setBottomRef;
+  //     }
+  //   }
+  // };
 
   const propsImg = {
-    width: 450,
-    height: 450,
+    width: 371,
+    height: 371,
     zoomWidth: 100,
     img: images[imageIndex].url,
     scale: 1.5,
@@ -80,11 +83,13 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
   const onChangeIndex = (index: number) => {
     setImageIndex(index);
   };
-
+  // const previousSlide = () => {
+  //   setImageIndex(prev => prev - 1);
+  // };
   return (
     <S.Wrapper data-test="productPhotosGallery">
       <S.ThumbnailsContainer>
-        {!topImageInView && displayButtons && (
+        {/* {!topImageInView && displayButtons && (
           <S.TopButton
             onClick={() => {
               if (topImageRef.current) {
@@ -96,9 +101,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
               }
             }}
           >
-            <div style={{ transform: " rotate(90deg)" }}>
-              <Icon name="select_arrow" size={10} />
-            </div>
+            <img src={preCarouselImg} alt="" />
           </S.TopButton>
         )}
         {!bottomImageInView && displayButtons && (
@@ -113,33 +116,83 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
               }
             }}
           >
-            <div style={{ transform: " rotate(-90deg)" }}>
-              <Icon name="select_arrow" size={10} />
-            </div>
+            <img src={nextCarouselImg} alt="" />
           </S.BottomButton>
-        )}
+        )} */}
         <S.ThumbnailList>
-          <ul>
+          {/* <ul> */}
+          <Carousel
+            style={{ width: "100%" }}
+            slidesToShow={5}
+            speed={300}
+            dragging={false}
+            renderBottomCenterControls={null}
+            afterSlide={slideIndex => setImageIndex(imageIndex)}
+            renderCenterLeftControls={({ previousSlide, currentSlide }) => (
+              <S.TopButton
+                style={{
+                  transform: "translateX(-22px)",
+                  display: `${
+                    imageIndex === 0 ||
+                    images.length <= MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS
+                      ? "none"
+                      : "block"
+                  }`,
+                }}
+                onClick={() => {
+                  previousSlide();
+                  setImageIndex(prev => --prev);
+                }}
+              >
+                <img src={preCarouselImg} alt="" />
+              </S.TopButton>
+            )}
+            renderCenterRightControls={({
+              nextSlide,
+              currentSlide,
+              slideCount,
+              slidesToShow,
+            }) => (
+              <S.BottomButton
+                style={{
+                  transform: "translateX(22px)",
+                  display: `${
+                    imageIndex === images.length - 1 ||
+                    images.length <= MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS
+                      ? "none"
+                      : "block"
+                  }`,
+                }}
+                onClick={() => {
+                  nextSlide();
+                  setImageIndex(prev => ++prev);
+                }}
+              >
+                <img src={nextCarouselImg} alt="" />
+              </S.BottomButton>
+            )}
+          >
             {images &&
               images.length > 0 &&
               images.map((image, index) => {
                 return (
-                  <li
-                    key={index}
-                    data-test="galleryThumbnail"
-                    data-test-id={index}
+                  // <li
+                  //   key={index}
+                  //   data-test="galleryThumbnail"
+                  //   data-test-id={index}
+                  // >
+                  <S.Thumbnail
+                    // ref={(index, images.length)}
+                    onClick={() => setImageIndex(index)}
+                    activeThumbnail={Boolean(index === imageIndex)}
                   >
-                    <S.Thumbnail
-                      ref={setIntersectionObserver(index, images.length)}
-                      onClick={() => setImageIndex(index)}
-                      activeThumbnail={Boolean(index === imageIndex)}
-                    >
-                      <CachedImage alt={image.alt} url={image.url} />
-                    </S.Thumbnail>
-                  </li>
+                    <CachedImage alt={image.alt} url={image.url} />
+                  </S.Thumbnail>
+                  // </li>
                 );
               })}
-          </ul>
+          </Carousel>
+          {/* </ul> */}
         </S.ThumbnailList>
       </S.ThumbnailsContainer>
 

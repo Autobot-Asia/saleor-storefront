@@ -5,6 +5,8 @@ import { Checkbox } from "@components/atoms";
 import { checkoutMessages } from "@temp/intl";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
+import deliveryAddress from "../../../../images/deliveryAddress.svg";
+import invoice from "../../../../images/invoice.svg";
 import { AddressForm } from "../AddressForm";
 import { AddressGridSelector } from "../AddressGridSelector";
 import * as S from "./styles";
@@ -37,67 +39,53 @@ const CheckoutAddress: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <S.Wrapper>
-      {shippingAddressRequired && (
-        <>
-          <section>
-            <S.Title data-test="checkoutPageSubtitle">
-              <FormattedMessage {...checkoutMessages.shippingAddress} />
-            </S.Title>
-            {userAddresses ? (
-              <AddressGridSelector
-                testingContext="shipping"
-                formId={shippingFormId}
-                formRef={shippingFormRef}
-                addresses={userAddresses}
-                selectedAddressId={selectedUserShippingAddressId}
-                countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
-                userId={userId}
-                errors={shippingErrors}
-                onSelect={(address, id) =>
-                  setShippingAddress(address, undefined, id)
-                }
-                newAddressFormId={newAddressFormId}
-              />
-            ) : (
-              <AddressForm
-                testingContext="shippingAddressForm"
-                formId={shippingFormId}
-                formRef={shippingFormRef}
-                countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
-                address={{
-                  ...checkoutShippingAddress,
-                  email,
-                }}
-                handleSubmit={address =>
-                  setShippingAddress(address, address?.email)
-                }
-                includeEmail
-                errors={shippingErrors}
-              />
-            )}
-          </section>
-          <S.Divider />
-        </>
-      )}
+      <S.Title data-test="checkoutPageSubtitle">
+        <img src={deliveryAddress} alt="" />
+        <FormattedMessage {...checkoutMessages.deliveryAddress} />
+      </S.Title>
+      {/* {shippingAddressRequired && (
+        <> */}
       <section>
-        <S.Title data-test="checkoutPageSubtitle">
-          <FormattedMessage {...checkoutMessages.billingAddress} />
-        </S.Title>
-        {shippingAddressRequired && (
-          <Checkbox
-            data-test="checkoutAddressBillingAsShippingCheckbox"
-            name="billing-same-as-shipping"
-            checked={billingAsShippingAddress}
-            onChange={() =>
-              setBillingAsShippingAddress(!billingAsShippingAddress)
+        {userAddresses ? (
+          <AddressGridSelector
+            testingContext="shipping"
+            formId={shippingFormId}
+            formRef={shippingFormRef}
+            addresses={userAddresses}
+            selectedAddressId={selectedUserShippingAddressId}
+            countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
+            userId={userId}
+            errors={shippingErrors}
+            onSelect={(address, id) =>
+              setShippingAddress(address, undefined, id)
             }
-          >
-            <FormattedMessage defaultMessage="Same as shipping address" />
-          </Checkbox>
+            newAddressFormId={newAddressFormId}
+          />
+        ) : (
+          <AddressForm
+            testingContext="shippingAddressForm"
+            formId={shippingFormId}
+            formRef={shippingFormRef}
+            countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
+            address={{
+              ...checkoutShippingAddress,
+              email,
+            }}
+            handleSubmit={address =>
+              setShippingAddress(address, address?.email)
+            }
+            includeEmail
+            errors={shippingErrors}
+          />
         )}
-        {!billingAsShippingAddress && (
+      </section>
+      <S.Divider />
+      {/* </> */}
+      {/* )} */}
+      {/* <section>
+        {true && (
           <>
-            {shippingAddressRequired && <S.Divider />}
+            {shippingAddressRequired}
             {userAddresses ? (
               <AddressGridSelector
                 testingContext="billing"
@@ -128,6 +116,42 @@ const CheckoutAddress: React.FC<IProps> = ({
               />
             )}
           </>
+        )}
+      </section> */}
+      <section style={{ marginTop: 18 }}>
+        <S.CheckboxAddress>
+          <Checkbox
+            data-test="checkoutAddressBillingAsShippingCheckbox"
+            name="billing-same-as-shipping"
+            checked={billingAsShippingAddress}
+            onChange={() =>
+              setBillingAsShippingAddress(!billingAsShippingAddress)
+            }
+          >
+            <FormattedMessage defaultMessage="Lấy hoá đơn giá trị gia tăng" />
+          </Checkbox>
+        </S.CheckboxAddress>
+        <S.Title data-test="checkoutPageSubtitle">
+          <img src={invoice} alt="" />
+          <FormattedMessage {...checkoutMessages.infoInvoice} />
+        </S.Title>
+        {userAddresses && billingAsShippingAddress ? (
+          <AddressGridSelector
+            testingContext="shipping"
+            formId={shippingFormId}
+            formRef={shippingFormRef}
+            addresses={userAddresses}
+            selectedAddressId={selectedUserShippingAddressId}
+            countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
+            userId={userId}
+            errors={shippingErrors}
+            onSelect={(address, id) =>
+              setShippingAddress(address, undefined, id)
+            }
+            newAddressFormId={newAddressFormId}
+          />
+        ) : (
+          ""
         )}
       </section>
     </S.Wrapper>

@@ -1,5 +1,5 @@
 import { media, styled } from "@styles";
-import { boldFontWeight, white } from "@styles/constants";
+import { boldFontWeight, mainColorPage, white } from "@styles/constants";
 
 export const Wrapper = styled.div`
   background-color: ${white};
@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  border: 1px solid #cccccc;
+  // border: 1px solid #cccccc;
 `;
 
 export const TileWrapper = styled.div`
@@ -21,6 +21,20 @@ export const Content = styled.div`
 `;
 
 export const ContentEditOneLine = styled.div`
+  .caTYvM {
+    border: 1px solid ${mainColorPage};
+  }
+  .eqMiH {
+    border: 1px solid ${mainColorPage};
+    outline-color: ${mainColorPage};
+  }
+  .eqMiH:hover {
+    border-color: ${mainColorPage};
+    outline-color: ${mainColorPage};
+  }
+  .caTYvM {
+    outline-color: ${mainColorPage};
+  }
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -51,8 +65,12 @@ export const FormButtons = styled.div`
   padding-top: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   button {
-    margin-left: 2rem;
+    border-radius: 5px;
+    span {
+      text-transform: capitalize;
+    }
+    // margin-left: 2rem;
   }
 `;

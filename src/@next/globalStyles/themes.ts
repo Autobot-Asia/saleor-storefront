@@ -73,7 +73,7 @@ export const defaultTheme = {
     ...C.theme,
   },
   container: {
-    width: 1140,
+    width: 1280,
   },
   demoBanner: {
     height: "60px",
@@ -185,6 +185,10 @@ export const defaultTheme = {
      * 14px in default theme
      */
     smallFontSize: C.smallFontSize,
+    /**
+     * 12px in default theme
+     */
+    labelFontSize: C.labelFontSize,
     /**
      * 96px in default theme
      */

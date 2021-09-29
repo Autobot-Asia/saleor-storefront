@@ -105,7 +105,15 @@ class Form<Values> extends React.Component<
     this.setState(state => {
       const errors = state.errors.filter(error => error.field !== input.name);
       if (!input.validity.valid) {
-        errors.push({ message: input.validationMessage, field: input.name });
+        errors.push({
+          message:
+            input.name === "email"
+              ? "Email is invalid"
+              : input.name === "password"
+              ? "Password is invalid"
+              : input.validationMessage,
+          field: input.name,
+        });
       }
       return { errors };
     });

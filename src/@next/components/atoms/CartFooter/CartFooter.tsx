@@ -1,10 +1,12 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
+import { Checkbox } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { commonMessages } from "@temp/intl";
 import { ITaxedMoney } from "@types";
 
+import TrashMyCart from "../../../../images/trashMyCart.svg";
 import * as S from "./styles";
 
 export interface CartFooterProps {
@@ -12,6 +14,8 @@ export interface CartFooterProps {
   shippingPrice?: ITaxedMoney | null;
   discountPrice?: ITaxedMoney | null;
   totalPrice?: ITaxedMoney | null;
+  onDeleteAllProduct?: () => void;
+  button?: React.ReactNode;
 }
 
 /**
@@ -22,18 +26,27 @@ const CartFooter: React.FC<CartFooterProps> = ({
   shippingPrice,
   discountPrice,
   totalPrice,
+  onDeleteAllProduct,
+  button,
 }: CartFooterProps) => {
+  const [checked, setChecked] = React.useState(false);
   const isShipping = !!shippingPrice?.gross && shippingPrice.gross.amount !== 0;
   const isDiscount = !!discountPrice?.gross && discountPrice.gross.amount !== 0;
 
   return (
     <S.Wrapper showShipping={isShipping} showDiscount={isDiscount}>
-      <S.SubtotalText>
-        <FormattedMessage {...commonMessages.subtotal} />
-      </S.SubtotalText>
-      <S.SubtotalPrice>
-        <TaxedMoney data-test="subtotalPrice" taxedMoney={subtotalPrice} />
-      </S.SubtotalPrice>
+      <S.CheckboxFooterMyCart>
+        <Checkbox
+          name="checkbox"
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+        />
+        <p>Chọn tất cả</p>
+      </S.CheckboxFooterMyCart>
+      <S.RemoveAllProduct>
+        <img src={TrashMyCart} alt="" onClick={onDeleteAllProduct} />
+        <p>Xoá tất cả giỏ hàng</p>
+      </S.RemoveAllProduct>
       {isShipping && (
         <>
           <S.ShippingText>
@@ -55,11 +68,12 @@ const CartFooter: React.FC<CartFooterProps> = ({
         </>
       )}
       <S.TotalText>
-        <FormattedMessage {...commonMessages.total} />
+        <p>Tạm tính:</p>
+        <S.TotalPrice>
+          <TaxedMoney data-test="totalPrice" taxedMoney={totalPrice} />
+        </S.TotalPrice>
+        <div>{button}</div>
       </S.TotalText>
-      <S.TotalPrice>
-        <TaxedMoney data-test="totalPrice" taxedMoney={totalPrice} />
-      </S.TotalPrice>
     </S.Wrapper>
   );
 };

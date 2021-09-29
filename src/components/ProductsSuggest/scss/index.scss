@@ -1,0 +1,95 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+.products-featured {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px #00000029;
+  height: 335px;
+  position: relative;
+  // background-color: $white;
+  &__container {
+    background-color: $white;
+    height: 100%;
+  }
+  .icon-nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -23px;
+    cursor: pointer;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: $white;
+    h3 {
+      letter-spacing: 0.4px;
+      text-transform: capitalize;
+      opacity: 1;
+      font: normal normal bold Arial;
+      padding-left: 15px !important;
+      font-weight: $bold-font-weight;
+      font-size: $base-line-height;
+      color: $mainColorHeader;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      // &:after {
+      //   content: "";
+      //   background: #dcdee3;
+      //   border-radius: 3px;
+      //   height: 3px;
+      //   overflow: hidden;
+      //   flex: 1 1;
+      //   margin-left: 15px;
+      // }
+    }
+    span {
+      font: normal normal normal Arial;
+      font-size: $base-font-size;
+      letter-spacing: 0.32px;
+      color: $mainColorHeader;
+      position: relative;
+      margin-right: 15px;
+      padding-right: 10px;
+      cursor: pointer;
+      &:after {
+        content: "›";
+        font-size: 22px;
+        position: absolute;
+        right: 0;
+        color: $mainColorHeader;
+      }
+    }
+  }
+  .list__product-sale {
+    height: 300px !important;
+  }
+  .list__product {
+    display: grid;
+    height: 292px;
+    // height: 100%;
+    grid-template-columns: 1fr;
+    // grid-gap: 3px;
+    // margin-top: 17px;
+    a {
+      color: $base-font-color;
+      text-decoration: none;
+    }
+    @media (min-width: $small-screen) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      // > a {
+      //   &:nth-child(n + 8) {
+      //     display: none;
+      //   }
+      // }
+    }
+  }
+}
+.products-featured.products-featured-sale {
+  height: 351px;
+}

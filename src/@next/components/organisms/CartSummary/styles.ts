@@ -1,7 +1,9 @@
 import { DefaultTheme, media, styled } from "@styles";
 
 export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
-  background-color: ${props => props.theme.colors.light};
+  margin-top: 7.5px;
+  box-shadow: 0px 0px 10px #00000029;
+  background-color: ${props => props.theme.colors.white};
   ${media.mediumScreen`
     width: 100%;
     height: 100%;
@@ -19,15 +21,17 @@ export const Wrapper = styled.div<{ mobileCartOpened: boolean }>`
   `}
 `;
 export const Content = styled.div`
-  padding: 0 20px 30px 20px;
+  padding: 0 20px 20px 20px;
 `;
 
 export const ProductLine = styled.div`
-  padding: 30px 0;
+  padding: 7.5px 0;
 `;
 
 export const CartSummaryProductList = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  max-width: 550px;
+  overflow: auto;
 `;
 
 export const HR = styled.hr`
@@ -40,18 +44,31 @@ export const HR = styled.hr`
 `;
 
 export const Title = styled.div`
-  padding: 30px 20px;
+  padding: 15px 20px 7.5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   margin: 0;
   font-size: ${props => props.theme.typography.h3FontSize};
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: ${props => props.theme.typography.boldFontWeight};
+  letter-spacing: 0.4px;
   ${media.mediumScreen`
     font-size: ${(props: { theme: DefaultTheme }) =>
       props.theme.typography.h4FontSize};
     cursor: pointer;
   `}
+  img {
+    margin-right: 10px;
+    width: 23px;
+    height: 19px;
+    position: relative;
+    top: -2px;
+  }
+  p {
+    color: ${props => props.theme.colors.mainColor};
+    font: normal normal normal 20px/15px Arial;
+  }
 `;
 export const ArrowUp = styled.div<{ mobileCartOpened: boolean }>`
   display: none;
@@ -67,11 +84,13 @@ export const ArrowUp = styled.div<{ mobileCartOpened: boolean }>`
 export const CostLine = styled.div<{ last: boolean }>`
   display: flex;
   justify-content: space-between;
+  margin-top: ${props => props.theme.spacing.spacer};
   span {
     display: inline-block;
+    font: normal normal bold 18px/22px Arial;
   }
   font-weight: ${props =>
-    props.last ? props.theme.typography.boldFontWeight : "normal"};
+    props.last ? props.theme.productItem.productItemPriceFontWeight : "normal"};
 `;
 
 export const Costs = styled.div`
@@ -83,5 +102,31 @@ export const Costs = styled.div`
     &:last-of-type {
       margin-bottom: 0px;
     }
+  }
+`;
+
+export const ShowAll = styled.div`
+  cursor: pointer;
+  text-align: center;
+  color: ${props => props.theme.colors.skuAndQuantity};
+  font-size: ${props => props.theme.typography.baseFontSize};
+  letter-spacing: 0.32px;
+  opacity: 1;
+  margin-bottom: ${props => props.theme.spacing.spacer};
+`;
+
+export const Payment = styled.div`
+  margin-top: 25px;
+  background-color: ${props => props.theme.colors.mainColor};
+  width: fit-content;
+  border-radius: 2px;
+  float: right;
+  cursor: pointer;
+  p {
+    padding: 14px 36px;
+    color: ${props => props.theme.colors.white};
+    font-size: ${props => props.theme.typography.baseFontSize};
+    letter-spacing: 0.32px;
+    text-transform: capitalize;
   }
 `;

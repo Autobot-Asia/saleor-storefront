@@ -1,5 +1,5 @@
 import { media, styled } from "@styles";
-import { orange, white } from "@styles/constants";
+import { black, orange, white } from "@styles/constants";
 
 export const Wrapper = styled.div``;
 
@@ -36,7 +36,7 @@ export const Tabs = styled.div`
 
 export const TabTitle = styled.div<{ active?: boolean }>`
   cursor: pointer;
-  font-size: ${props => props.theme.typography.baseFontSize};
+  // font-size: ${props => props.theme.typography.baseFontSize};
   letter-spacing: 0.02em;
   color: ${props => props.active && props.theme.colors.tabTitle};
   border-bottom-width: ${props => (props.active ? "4px" : "0")};
@@ -44,12 +44,16 @@ export const TabTitle = styled.div<{ active?: boolean }>`
   border-bottom-color: ${props =>
     props.active ? props.theme.colors.tabTitle : "transparent"};
   padding: 12px 16px;
-  margin-right: 4px;
+  margin-right: 8px;
   border-top: 1px solid #dcdee3;
   border-left: 1px solid #dcdee3;
   border-right: 1px solid #dcdee3;
   border-radius: 8px 8px 0 0;
-  background-color: ${props => (props.active ? "#ffffff" : "transparent")};
+  background-color: #ffffff;
+  font: normal normal normal 16px/19px Arial;
+  letter-spacing: 0.06px;
+  // color: ${black};
+  opacity: 1;
 
   ${media.smallScreen`
     font-size: ${(props: any) => props.theme.typography.baseFontSize};
@@ -67,11 +71,12 @@ export const CompanyImage = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const TitleText = styled.h3`
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  text-transform: uppercase;
+export const TitleText = styled.p`
+  font: normal normal bold 18px Arial;
+  letter-spacing: 0.07px;
+  color: ${black};
+  opacity: 1;
+  margin-bottom: 11px;
 `;
 // export const SubTitleText = styled.h4`
 //   font-size: 14px;

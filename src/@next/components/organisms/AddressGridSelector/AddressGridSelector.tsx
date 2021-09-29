@@ -1,11 +1,14 @@
+import { useAuth } from "@saleor/sdk";
+import { User } from "@saleor/sdk/lib/fragments/gqlTypes/User";
 import { Formik } from "formik";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
 
-import { AddNewTile, ErrorMessage, TileGrid } from "@components/atoms";
-import { AddressTileOption } from "@components/molecules";
+import { ErrorMessage } from "@components/atoms";
+// import { AddressTile, AddressTileOption } from "@components/molecules";
 import { checkoutMessages } from "@temp/intl";
 
+import AddressBook from "../../../../account/AddressBook/AddressBook";
 import { AddressFormModal } from "../AddressFormModal";
 import { IProps } from "./types";
 
@@ -25,17 +28,20 @@ const AddressGridSelector: React.FC<IProps> = ({
   newAddressFormId,
   testingContext,
 }: IProps) => {
+  const { user } = useAuth();
+  const User = { ...user };
+
   const [displayNewModal, setDisplayNewModal] = useState(false);
   const intl = useIntl();
 
-  const addNewTile = (
-    <AddNewTile
-      data-test={`${testingContext}AddressTileAddNew`}
-      key="newTile"
-      type={intl.formatMessage({ defaultMessage: "address" })}
-      onClick={() => setDisplayNewModal(true)}
-    />
-  );
+  // const addNewTile = (
+  //   <AddNewTile
+  //     data-test={`${testingContext}AddressTileAddNew`}
+  //     key="newTile"
+  //     type={intl.formatMessage({ defaultMessage: "address" })}
+  //     onClick={() => setDisplayNewModal(true)}
+  //   />
+  // );
 
   return (
     <>
@@ -64,31 +70,7 @@ const AddressGridSelector: React.FC<IProps> = ({
         }) => {
           return (
             <form id={formId} ref={formRef} onSubmit={handleSubmit}>
-              <TileGrid
-                columns={2}
-                elements={addresses.reduce(
-                  (elements, { id, address }, index) => {
-                    elements.push(
-                      <AddressTileOption
-                        testingContext={testingContext}
-                        data-test={`${testingContext}AddressTileOption`}
-                        data-test-id={index}
-                        key={`addressTile-${id}`}
-                        id={id}
-                        inputName="addressTileOption"
-                        address={address}
-                        onChange={() => setFieldValue("addressTileOption", id)}
-                        checked={
-                          !!values.addressTileOption &&
-                          values.addressTileOption === id
-                        }
-                      />
-                    );
-                    return elements;
-                  },
-                  [addNewTile]
-                )}
-              />
+              <AddressBook user={User as User} />
               <ErrorMessage errors={errors} />
             </form>
           );

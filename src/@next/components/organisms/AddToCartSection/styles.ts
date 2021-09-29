@@ -1,4 +1,5 @@
 import { styled } from "@styles";
+import { mainColorPage, white } from "@styles/constants";
 
 export const AddToCartSelection = styled.div`
   padding: 0 !important;
@@ -23,7 +24,7 @@ export const UndiscountedPrice = styled.span`
 
 export const VariantPicker = styled.div`
   display: grid;
-  margin-top: 20px;
+  // margin-top: 20px;
 
   .react-select-wrapper,
   .input {
@@ -33,9 +34,53 @@ export const VariantPicker = styled.div`
 `;
 
 export const QuantityInput = styled.div`
-  padding-top: 20px;
+  // padding-top: 20px;
 `;
 
 export const ErrorMessage = styled.p`
   color: ${props => props.theme.colors.error};
+`;
+
+export const WrapperOptionBuy = styled.div`
+  margin-top: 25px;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+`;
+type IBoxAddTrolley = {
+  isDisabled: boolean;
+};
+export const BoxAddTrolley = styled.div<IBoxAddTrolley>`
+  height: 100%;
+  width: 228px;
+  border: 1px solid;
+  border-color: ${props => (props.isDisabled ? "#7A7A7A" : `${mainColorPage}`)};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: ${mainColorPage};
+  font: normal normal normal 16px/12px Arial;
+  letter-spacing: 0.32px;
+  background-color: ${white};
+  cursor: ${props => (props.isDisabled ? "default" : "pointer")};
+  span {
+    color: ${props => (props.isDisabled ? `#7A7A7A` : `${mainColorPage}`)};
+  }
+`;
+
+export const BoxQuote = styled.div`
+  height: 100%;
+  width: 185px;
+  border: 1px solid ${mainColorPage};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: ${mainColorPage};
+  font: normal normal normal 16px/12px Arial;
+  letter-spacing: 0.32px;
+  cursor: pointer;
 `;

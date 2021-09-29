@@ -5,13 +5,14 @@ import ReactSVG from "react-svg";
 
 import { OfflinePlaceholder } from "@components/atoms";
 import { paths } from "@paths";
-import { grayMedium } from "@styles/constants";
+// import { grayMedium } from "@styles/constants";
 import { DebouncedTextField } from "@temp/components/Debounce";
 import { channelSlug } from "@temp/constants";
 import { commonMessages } from "@temp/intl";
 
 import { maybe } from "../../../core/utils";
-import searchImg from "../../../images/search.svg";
+import dropDownImg from "../../../images/icon-dropdown.svg";
+import searchImg from "../../../images/searchHeader.svg";
 import closeImg from "../../../images/x.svg";
 import { Error } from "../../Error";
 import NetworkStatus from "../../NetworkStatus";
@@ -29,7 +30,6 @@ function Search(props: SearchProps) {
   const [searchTerms, setSearchTerms] = useState(props.router.query.q || "");
 
   const [hasSearchPhrase, setHasSearchPhrase] = useState(false);
-
   const hasResults = (data: SearchResults) =>
     maybe(() => !!data.products.edges.length);
 
@@ -57,13 +57,16 @@ function Search(props: SearchProps) {
   useOutsideAlerter(wrapperRef);
 
   const handleClickShowAll = () => {
-    if (searchTerms.length > 0) {
-      props.router.push(`${paths.search}?q=${searchTerms}`);
+    if ((searchTerms as string).trim().length > 0) {
+      setShowResult(false);
+      const keyword = (searchTerms as string).trim();
+      props.router.push(`${paths.search}?q=${keyword}`);
+      setSearchTerms((searchTerms as string).trim());
     }
   };
 
   React.useEffect(() => {
-    if (searchTerms.length > 0 && props.router.pathname !== "/search") {
+    if ((searchTerms as string).trim().length > 0) {
       setShowResult(true);
       setHasSearchPhrase(true);
     } else {
@@ -71,9 +74,16 @@ function Search(props: SearchProps) {
       setHasSearchPhrase(false);
     }
   }, [searchTerms]);
-
+  React.useEffect(() => {
+    if (
+      props.router.pathname.includes("/product") ||
+      props.router.pathname === "/"
+    ) {
+      setReset(true);
+      setSearchTerms("");
+    }
+  }, [props.router]);
   const [reset, setReset] = React.useState(false);
-
   React.useEffect(() => {
     setReset(false);
   }, [searchTerms]);
@@ -81,14 +91,33 @@ function Search(props: SearchProps) {
   return (
     <div ref={wrapperRef}>
       <div className="search__input">
+        <div
+          className="search-dropdown"
+          onClick={() => {
+            // handleClickShowAll();
+            // setShowResult(false);
+          }}
+        >
+          <div className="search-dropdown__btn">
+            <span className="search-dropdown__btn__title">Tất cả</span>
+            <ReactSVG path={dropDownImg} />
+          </div>
+        </div>
         <DebouncedTextField
           onChange={e => {
             setSearchTerms((e.target.value as string).toLowerCase());
           }}
+          onClick={() => setReset(false)}
           onKeyPress={e => {
             if (e.key === "Enter") {
+              if ((searchTerms as string).trim().length === 0) {
+                // setSearchTerms("");
+                return;
+              }
               setShowResult(false);
-              props.router.push(`${paths.search}?q=${searchTerms}`);
+              const keyword = (searchTerms as string).trim();
+              props.router.push(`${paths.search}?q=${keyword}`);
+              setSearchTerms((searchTerms as string).trim());
             }
           }}
           value={searchTerms}
@@ -118,7 +147,7 @@ function Search(props: SearchProps) {
             }}
           >
             <ReactSVG path={searchImg} />
-            <span className="btn-search--title">Search</span>
+            <span className="btn-search__title">Tìm kiếm</span>
           </button>
         </div>
       </div>
@@ -143,14 +172,21 @@ function Search(props: SearchProps) {
                           style={{
                             position: "absolute",
                             width: "100%",
-                            background: grayMedium,
+                            top: "100%",
+                            paddingRight: "114px",
+                            paddingLeft: "58px",
                             borderRadius: 4,
                             zIndex: 9999,
+                            marginTop: "3px",
+                            padding: "0 114px 0 58px",
                             display: showResult ? "block" : "none",
                           }}
                         >
                           {showResult && (
-                            <ul onClick={handleHideResult}>
+                            <ul
+                              className="search__input__wrapper-allProduct"
+                              onClick={handleHideResult}
+                            >
                               {data.products.edges.map(product => (
                                 <ProductItem
                                   {...product}
@@ -189,5 +225,4 @@ function Search(props: SearchProps) {
     </div>
   );
 }
-
 export default injectIntl(withRouter(Search));

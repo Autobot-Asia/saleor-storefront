@@ -11,12 +11,13 @@ export const Loader = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  margin: 45px 0;
+  padding: 20px 19px 0;
+  margin: 70px 0;
   display: grid;
 
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: 7fr 3.2fr;
   grid-template-rows: 85px auto auto;
-  grid-column-gap: 30px;
+  grid-column-gap: 40px;
   grid-template-areas:
     "navigation cartSummary"
     "checkout cartSummary"
@@ -34,15 +35,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Navigation = styled.div`
+  display: flex;
+  justify-content: center;
   grid-area: navigation;
-  border-bottom: 1px solid
-    ${props => props.theme.colors.baseFontColorTransparent};
   padding-bottom: 43px;
   height: 85px;
 `;
 export const Checkout = styled.div`
   grid-area: checkout;
-  padding: 3rem 0 0 0;
 `;
 export const PaymentGateways = styled.div<{ hide: boolean }>`
   ${props => props.hide && "display: none;"};
@@ -58,5 +58,5 @@ export const CartSummary = styled.div`
 `;
 export const Button = styled.div`
   grid-area: button;
-  margin: 3rem 0 0 0;
+  margin: 25px 0 0 0;
 `;

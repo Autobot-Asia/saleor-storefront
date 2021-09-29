@@ -10,17 +10,17 @@ const steps = [
   {
     index: 0,
     link: "#",
-    name: "Shipping",
+    name: "Address",
   },
   {
     index: 1,
     link: "#",
-    name: "Billing",
+    name: "Payment",
   },
   {
     index: 2,
     link: "#",
-    name: "Payment",
+    name: "Completed",
   },
 ];
 

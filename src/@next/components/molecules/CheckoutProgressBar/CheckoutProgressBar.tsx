@@ -66,14 +66,11 @@ const generateSteps = (
       case "Address":
         name = intl.formatMessage(checkoutMessages.stepNameAddress);
         break;
-      case "Shipping":
-        name = intl.formatMessage(checkoutMessages.stepNameShipping);
-        break;
       case "Payment":
         name = intl.formatMessage(checkoutMessages.stepNamePayment);
         break;
       case "Review":
-        name = intl.formatMessage(checkoutMessages.stepNameReview);
+        name = intl.formatMessage(checkoutMessages.stepNameCompleted);
         break;
     }
     return (
