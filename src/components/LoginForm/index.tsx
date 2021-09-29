@@ -72,7 +72,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
                 autoComplete="password"
                 label={intl.formatMessage(commonMessages.password)}
                 type="password"
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%.,~#^*?&]).{8,}$"
                 // required
               />
             </div>
