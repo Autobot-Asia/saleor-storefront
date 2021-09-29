@@ -44,7 +44,7 @@ const View: React.FC<NextPage> = () => {
                 <MetaWrapper
                   meta={{
                     description: data.shop ? data.shop.description : "",
-                    title: data.shop ? data.shop.name : "",
+                    title: "Thachsanh",
                   }}
                 >
                   <Page

@@ -42,7 +42,7 @@ const extractMeta = (product: ProductDetails_product, url: string) => ({
   ],
   description: product.seoDescription || product.description,
   image: product?.thumbnail?.url || null,
-  title: product.seoTitle || product.name,
+  title: "Thachsanh",
   type: "product.item",
   url: window.location.href,
 });
