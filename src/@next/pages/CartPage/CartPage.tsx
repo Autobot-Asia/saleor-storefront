@@ -34,7 +34,7 @@ const getShoppingButton = () => (
 );
 
 const getCheckoutButton = (user?: UserDetails_me | null) => (
-  <Link href={user ? paths.checkout : paths.login}>
+  <Link href={user ? paths.checkoutAddress : paths.login}>
     <Button testingContext="proceedToCheckoutButton">
       <FormattedMessage defaultMessage="Mua Hàng" />
     </Button>

@@ -28,22 +28,25 @@ export const useCheckoutStepState = (
     isPriceEqual(payment.total, totalPrice.gross);
 
   const getMaxPossibleStep = () => {
-    if (!checkout?.id && items) {
-      // we are creating checkout during address set up
-      return CheckoutStep.Address;
-    }
+    // if (!checkout?.id && items) {
+    //   // we are creating checkout during address set up
+    //   return CheckoutStep.Address;
+    // }
 
-    const isShippingAddressSet =
-      !isShippingRequiredForProducts || !!checkout?.shippingAddress;
-    const isBillingAddressSet = !!checkout?.billingAddress;
+    // const isShippingAddressSet =
+    //   !isShippingRequiredForProducts || !!checkout?.shippingAddress;
+
+    // const isBillingAddressSet = !!checkout?.billingAddress;
+
     const isShippingMethodSet =
       !isShippingRequiredForProducts || !!checkout?.shippingMethod;
+
     const isPaymentMethodSet =
       !!payment?.id && isCheckoutPriceEqualPaymentPrice;
 
-    if (!isShippingAddressSet || !isBillingAddressSet) {
-      return CheckoutStep.Address;
-    }
+    // if (!isShippingAddressSet || !isBillingAddressSet) {
+    //   return CheckoutStep.Address;
+    // }
     if (!isShippingMethodSet) {
       return CheckoutStep.Shipping;
     }
