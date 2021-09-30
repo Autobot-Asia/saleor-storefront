@@ -1,5 +1,7 @@
+import { useAuth, useCheckout } from "@saleor/sdk";
 import React from "react";
 
+import { DeliveryAddress } from "../DeliveryAddress";
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -43,7 +45,13 @@ const CheckoutPayment: React.FC<IProps> = ({
   //   }
   // };
 
-  return <S.Wrapper />;
+  console.log(useCheckout());
+
+  return (
+    <S.Wrapper>
+      <DeliveryAddress />
+    </S.Wrapper>
+  );
 };
 
 export { CheckoutPayment };
