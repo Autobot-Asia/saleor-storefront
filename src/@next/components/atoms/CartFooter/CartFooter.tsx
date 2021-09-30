@@ -45,7 +45,7 @@ const CartFooter: React.FC<CartFooterProps> = ({
       </S.CheckboxFooterMyCart>
       <S.RemoveAllProduct>
         <img src={TrashMyCart} alt="" onClick={onDeleteAllProduct} />
-        <p>Xoá tất cả giỏ hàng</p>
+        <p>Xoá cả giỏ hàng</p>
       </S.RemoveAllProduct>
       {isShipping && (
         <>
