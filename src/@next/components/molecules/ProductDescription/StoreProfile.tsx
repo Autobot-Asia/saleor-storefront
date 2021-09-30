@@ -19,7 +19,7 @@ export const StoreProfile: React.FC<IProps> = ({ store }: IProps) => {
   // const tempDescription =
   //   store?.description && store?.description.replace(/'/g, '"');
 
-  const isShowMap = store?.latlong && store?.latlong !== "";
+  const isShowMap = store?.latlong !== "";
 
   const lat = store?.latlong ? parseFloat(store.latlong.split(",")[0]) : 0;
   const lng = store?.latlong ? parseFloat(store?.latlong?.split(",")[1]) : 0;
