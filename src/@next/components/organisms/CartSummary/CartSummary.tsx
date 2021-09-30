@@ -1,9 +1,11 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
 
 import { Icon } from "@components/atoms";
 import { TaxedMoney } from "@components/containers";
 import { CartSummaryRow } from "@components/molecules";
+import { paths } from "@paths";
 import { commonMessages } from "@temp/intl";
 
 import Trolley from "../../../../images/trolleyCheckout.svg";
@@ -135,7 +137,9 @@ const CartSummary: React.FC<CartSummaryProps> = ({
         </S.Content>
       </S.Wrapper>
       <S.Payment>
-        <p>Thanh Toán</p>
+        <Link href={paths.checkoutPayment}>
+          <p>Thanh Toán</p>
+        </Link>
       </S.Payment>
     </>
   );
