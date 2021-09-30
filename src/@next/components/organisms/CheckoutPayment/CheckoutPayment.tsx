@@ -1,4 +1,3 @@
-import { useAuth, useCheckout } from "@saleor/sdk";
 import React from "react";
 
 import { DeliveryAddress } from "../DeliveryAddress";
@@ -44,8 +43,6 @@ const CheckoutPayment: React.FC<IProps> = ({
   //     submitUnchangedDiscount();
   //   }
   // };
-
-  console.log(useCheckout());
 
   return (
     <S.Wrapper>
