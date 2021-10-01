@@ -1,7 +1,7 @@
 import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
-  width: 1242px;
+  width: 100%;
 `;
 
 export const Divider = styled.div`
