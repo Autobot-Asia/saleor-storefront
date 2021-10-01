@@ -34,6 +34,15 @@ export const Wrapper = styled.div`
   `}
 `;
 
+export const WrapperWithoutCartSummary = styled.div`
+  padding: 20px 19px 0;
+  margin: 70px 0;
+
+  ${media.mediumScreen`
+   
+  `};
+`;
+
 export const Navigation = styled.div`
   display: flex;
   justify-content: center;

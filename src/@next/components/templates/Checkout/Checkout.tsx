@@ -1,6 +1,8 @@
+import { useRouter } from "next/router";
 import React from "react";
 
 import { Loader } from "@components/atoms";
+import { paths } from "@paths";
 
 import { Container } from "../Container";
 import * as S from "./styles";
@@ -18,6 +20,7 @@ const Checkout: React.FC<IProps> = ({
   cartSummary,
   button,
 }: IProps) => {
+  const { pathname } = useRouter();
   return (
     <Container>
       {loading && (
@@ -25,15 +28,22 @@ const Checkout: React.FC<IProps> = ({
           <Loader fullScreen />
         </S.Loader>
       )}
-      <S.Wrapper>
-        <S.Navigation>{navigation}</S.Navigation>
-        <S.Checkout>{checkout}</S.Checkout>
-        <S.PaymentGateways hide={hidePaymentGateways}>
-          {paymentGateways}
-        </S.PaymentGateways>
-        <S.CartSummary>{cartSummary}</S.CartSummary>
-        <S.Button>{button}</S.Button>
-      </S.Wrapper>
+      {pathname === paths.checkoutAddress ? (
+        <S.Wrapper>
+          <S.Navigation>{navigation}</S.Navigation>
+          <S.Checkout>{checkout}</S.Checkout>
+          <S.PaymentGateways hide={hidePaymentGateways}>
+            {paymentGateways}
+          </S.PaymentGateways>
+          <S.CartSummary>{cartSummary}</S.CartSummary>
+          <S.Button>{button}</S.Button>
+        </S.Wrapper>
+      ) : (
+        <S.WrapperWithoutCartSummary>
+          <S.Navigation>{navigation}</S.Navigation>
+          <S.Checkout>{checkout}</S.Checkout>
+        </S.WrapperWithoutCartSummary>
+      )}
     </Container>
   );
 };
