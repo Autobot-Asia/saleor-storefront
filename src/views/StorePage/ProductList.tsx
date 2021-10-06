@@ -1,7 +1,5 @@
-import Link from "next/link";
 import * as React from "react";
 
-import { generateProductUrl } from "../../core/utils";
 import Flag from "../../images/flag-storepage.svg";
 // eslint-disable-next-line import/no-unresolved
 import { ListProductType } from "./Page";
@@ -16,7 +14,6 @@ interface IProps {
 function ProductList({ listProduct, title }: IProps) {
   // const [flag, setFlag] = React.useState(true);
   // const [discount, setDiscount] = React.useState(true);
-
   return (
     <div>
       <div>
@@ -25,38 +22,27 @@ function ProductList({ listProduct, title }: IProps) {
         </div>
         <div style={{ display: "flex", marginBottom: "70px" }}>
           {listProduct.map(item => {
-            const productUrl = generateProductUrl(item.id, item.name);
             return (
               <div className="overview-img">
                 <div>
-                  <Link href={productUrl}>
-                    <a>
-                      <div className="overview-img-sale">
-                        <div className="overview-img-discount">
-                          {/* {flag === true ? <img src={Flag} alt="flag" /> : ""} */}
-                          <img src={Flag} alt="flag" />
-                          <span>25% GIẢM</span>
-                        </div>
-                        <img
-                          src={item.imgUrl}
-                          alt="star"
-                          className="overview_img_product"
-                          width="217px"
-                          height="217px"
-                        />
-                      </div>
-                    </a>
-                  </Link>
+                  <div className="overview-img-sale">
+                    <div className="overview-img-discount">
+                      {/* {flag === true ? <img src={Flag} alt="flag" /> : ""} */}
+                      <img src={Flag} alt="flag" />
+                      <span>25% GIẢM</span>
+                    </div>
+                    <img
+                      src={item.imgUrl}
+                      alt="star"
+                      className="overview_img_product"
+                      width="217px"
+                      height="217px"
+                    />
+                  </div>
                   <div className="overview_product_info">
-                    <Link href={productUrl}>
-                      <a>
-                        <div className="overview_product_info_text">
-                          <span className="overview_product_name">
-                            {item.name}
-                          </span>
-                        </div>
-                      </a>
-                    </Link>
+                    <div className="overview_product_info_text">
+                      <span className="overview_product_name">{item.name}</span>
+                    </div>
                     <div className="overview_product_discount_text">
                       <span>
                         <del>220.000</del>
