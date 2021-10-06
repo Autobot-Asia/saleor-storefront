@@ -1,11 +1,6 @@
-import Link from "next/link";
-import Carousel from "nuka-carousel";
 import * as React from "react";
 
-import { generateProductUrl } from "../../core/utils";
 import Flag from "../../images/flag-storepage.svg";
-import nextCarouselImg from "../../images/nextCarouselHomePage.svg";
-import preCarouselImg from "../../images/preCarouselHomePage.svg";
 // eslint-disable-next-line import/no-unresolved
 import { ListProductType } from "./Page";
 
@@ -20,51 +15,14 @@ function ProductList({ listProduct, title }: IProps) {
   // const [flag, setFlag] = React.useState(true);
   // const [discount, setDiscount] = React.useState(true);
   return (
-    <>
-      <div className="overview-card-title">
-        <span className="overview-card-title-text">{title}</span>
-      </div>
-      <Carousel
-        wrapAround
-        renderBottomCenterControls={null}
-        slidesToScroll={5}
-        slidesToShow={5}
-        speed={1000}
-        // withoutControls={true}
-        renderCenterLeftControls={({ previousSlide, currentSlide }) => (
-          <button
-            style={{
-              transform: "translate(-22px, -32px)",
-              // display: `${currentSlide === 0 ? "none" : "unset"}`
-            }}
-            onClick={previousSlide}
-          >
-            <img src={preCarouselImg} alt="" />
-          </button>
-        )}
-        renderCenterRightControls={({
-          nextSlide,
-          currentSlide,
-          slideCount,
-          slidesToShow,
-        }) => (
-          <button
-            style={{
-              transform: "translate(22px, -32px)",
-              // display: `${currentSlide === (slideCount - slidesToShow) ? "none" : "unset"}`
-            }}
-            onClick={nextSlide}
-          >
-            <img src={nextCarouselImg} alt="" />
-          </button>
-        )}
-      >
-        {listProduct.map(product => (
-          <Link
-            href={generateProductUrl(product.id, product.name)}
-            key={product.id}
-          >
-            <a>
+    <div>
+      <div>
+        <div className="overview-card-title">
+          <span className="overview-card-title-text">{title}</span>
+        </div>
+        <div style={{ display: "flex", marginBottom: "70px" }}>
+          {listProduct.map(item => {
+            return (
               <div className="overview-img">
                 <div>
                   <div className="overview-img-sale">
@@ -74,7 +32,7 @@ function ProductList({ listProduct, title }: IProps) {
                       <span>25% GIẢM</span>
                     </div>
                     <img
-                      src={product.imgUrl}
+                      src={item.imgUrl}
                       alt="star"
                       className="overview_img_product"
                       width="217px"
@@ -83,26 +41,34 @@ function ProductList({ listProduct, title }: IProps) {
                   </div>
                   <div className="overview_product_info">
                     <div className="overview_product_info_text">
-                      <span className="overview_product_name">
-                        {product.name}
-                      </span>
+                      <span className="overview_product_name">{item.name}</span>
                     </div>
                     <div className="overview_product_discount_text">
                       <span>
                         <del>220.000</del>
                       </span>
                     </div>
+                    {/* {discount === true ? (
+                      <div className="overview_product_discount_text">
+                        <span>
+                          <del>220.000</del>
+                        </span>
+                      </div>
+                    ) : (
+                      ""
+                    )} */}
+
                     <div className="overview_img_product_price">
                       <span>220.000</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </a>
-          </Link>
-        ))}
-      </Carousel>
-    </>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }
 export default ProductList;
