@@ -78,6 +78,7 @@ export const Input: React.FC<IProps> = ({
             disabled={disabled}
             onChange={onChange}
             labelBackground={labelBackground}
+            placeholder={placeholder}
           />
         )}
 

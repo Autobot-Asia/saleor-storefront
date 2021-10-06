@@ -3,11 +3,17 @@ import { styled } from "@styles";
 export const Modal = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 100%;
+  padding: 32px 52px;
 `;
 
-export const Content = styled.div<{ padding?: string }>`
-  padding: ${({ theme: { spacing }, padding }) =>
-    padding || `4rem ${spacing.gutter} 1.8rem ${spacing.gutter}`};
+export const Content = styled.div`
+  height: 100%;
+`;
+
+export const Header = styled.div`
+  color: #188c72;
+  text-align: center;
+  font: normal normal normal 30px/15px Arial;
+  margin-bottom: 54px;
 `;

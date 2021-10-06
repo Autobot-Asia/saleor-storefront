@@ -95,7 +95,11 @@ const CheckoutProgressBar: React.FC<IProps> = ({
   activeStep,
 }: IProps) => {
   const intl = useIntl();
-  return <S.Wrapper>{generateSteps(steps, activeStep, intl)}</S.Wrapper>;
+  return (
+    <S.Wrapper width={!activeStep ? "665px" : "824px"}>
+      {generateSteps(steps, activeStep, intl)}
+    </S.Wrapper>
+  );
 };
 
 export { CheckoutProgressBar };

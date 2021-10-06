@@ -59,10 +59,10 @@ export const Step = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ width: string }>`
   background-color: "#BFBFBF" !important;
   display: flex;
-  width: 665px;
+  width: ${props => props.width};
   justify-content: space-between;
   align-items: flex-start;
   position: relative;

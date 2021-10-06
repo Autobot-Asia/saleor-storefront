@@ -30,10 +30,10 @@ const getEdgeColor = (
 
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
-  border: 0.30000001192092896px solid #70707070;
+  // border: 0.30000001192092896px solid #70707070;
   color: ${props => getEdgeColor(props)};
-  width: min-content;
-  height: 26px;
+  width: 100%;
+  height: 45px;
 `;
 
 export const Content = styled.span`
@@ -43,20 +43,17 @@ export const Content = styled.span`
 
 export const InputWrapper = styled.div`
   position: relative;
+  width: 100%;
   min-width: 34px;
-  height: 25px;
 `;
 
 export const Input = styled.input<{ labelBackground: string | null }>`
-  border: none;
-  border-left: 0.30000001192092896px solid #70707070;
-  border-right: 0.30000001192092896px solid #70707070;
+  border: 0.30000001192092896px solid #70707070;
   overflow: hidden;
   margin: 0;
-  padding-left: 3px;
-  text-align: center;
+  padding-left: 18px;
   width: 100%;
-  height: 100%;
+  height: 45px;
   font-size: ${props => props.theme.typography.smallFontSize};
   outline: none;
   background-color: transparent;
