@@ -154,7 +154,7 @@ export const SingleAttribute = styled.p`
 export const Name = styled.p`
   // font-weight: ${props => props.theme.typography.boldFontWeight};
   font-size: ${props => props.theme.typography.baseFontSize};
-  font: normal normal normal Arial;
+  font: normal normal normal 16px Arial;
   text-align: left;
   text-transform: capitalize;
   letter-spacing: 0.32px;

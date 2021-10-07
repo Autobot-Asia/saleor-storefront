@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 3fr 1.6875fr 1.57fr 1.67fr 1.91fr;
   align-items: center;
   font-size: ${props => props.theme.typography.baseFontSize};
+  font-family: Arial
   background-color: ${props => props.theme.colors.white};
   color: ${props => props.theme.colors.primaryBlack};
   padding: 0 12px;

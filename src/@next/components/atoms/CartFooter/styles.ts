@@ -5,6 +5,7 @@ export const Wrapper = styled.div<{
   showDiscount: boolean;
 }>`
   display: grid;
+  font-family: Arial
   font-size: ${props => props.theme.typography.h4FontSize};
   grid-template-areas:
     ${props => props.showShipping && `". shippingText shippingPrice ."`}
