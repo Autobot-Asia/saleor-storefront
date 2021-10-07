@@ -14,6 +14,7 @@ interface IProps {
 function ProductList({ listProduct, title }: IProps) {
   // const [flag, setFlag] = React.useState(true);
   // const [discount, setDiscount] = React.useState(true);
+
   return (
     <div>
       <div>
@@ -39,6 +40,7 @@ function ProductList({ listProduct, title }: IProps) {
                       height="217px"
                     />
                   </div>
+
                   <div className="overview_product_info">
                     <div className="overview_product_info_text">
                       <span className="overview_product_name">{item.name}</span>

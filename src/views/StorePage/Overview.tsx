@@ -5,11 +5,10 @@ import { channelSlug } from "@temp/constants";
 import Avatar from "../../images/avatar.svg";
 import Chat from "../../images/chat.svg";
 import Clock from "../../images/clock.svg";
-import nextCarouselImg from "../../images/nextCarouselHomePage.svg";
 import Star from "../../images/star.svg";
 import Store from "../../images/store.svg";
 import { ListProductType } from "./Page";
-import ProductList from "./ProductList";
+import { ProductCarousel } from "./ProductCarousel";
 import { TypedProductListQuery } from "./queries";
 
 import "./scss/index.scss";
@@ -79,7 +78,7 @@ const Overview: React.FC<{}> = () => (
       alwaysRender
       displayLoader={false}
       errorPolicy="all"
-      variables={{ first: 5, channel: channelSlug }}
+      variables={{ first: 12, channel: channelSlug }}
     >
       {({ data }) => {
         const listMainProduct: ListProductType[] =
@@ -101,29 +100,26 @@ const Overview: React.FC<{}> = () => (
             </div> */}
 
             <div className="card-product-overview-discount">
-              <ProductList
+              <ProductCarousel
                 title="Sản phẩm nổi bật"
-                listProduct={listMainProduct}
+                productList={listMainProduct}
               />
-              <div className="card-product-nextCarousel">
-                <img src={nextCarouselImg} alt="" />
-              </div>
             </div>
 
             <div className="card-product-overview-discount">
-              <ProductList
+              <ProductCarousel
                 title="Sản phẩm giảm giá"
-                listProduct={listMainProduct}
+                productList={listMainProduct}
               />
-              <div className="card-product-nextCarousel">
+              {/* <div className="card-product-nextCarousel">
                 <img src={nextCarouselImg} alt="" />
-              </div>
+              </div> */}
             </div>
 
             <div className="card-product-overview-discount">
-              <ProductList
+              <ProductCarousel
                 title="Tất cả sản phẩm"
-                listProduct={listMainProduct}
+                productList={listMainProduct}
               />
               <div className="card-product-watchAll">
                 <a>Xem tất cả &gt;</a>
