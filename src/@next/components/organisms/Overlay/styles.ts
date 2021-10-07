@@ -76,6 +76,7 @@ export const Lightbox = styled.div<IStyleProps>`
 Lightbox.displayName = "S.Lightbox";
 
 export const Overlay = styled.div<IStyleProps>`
+  padding-top: 70px;
   display: flex;
   position: fixed;
   overflow-y: auto;
@@ -83,7 +84,7 @@ export const Overlay = styled.div<IStyleProps>`
   height: 100%;
   min-height: 100vh;
   top: 0;
-  z-index: 2;
+  z-index: 9999;
   transition: opacity 0.2s ease;
   transition-delay: ${({ open }) => (open ? 0 : ".4s")};
   background-color: ${({ transparent, theme }) =>

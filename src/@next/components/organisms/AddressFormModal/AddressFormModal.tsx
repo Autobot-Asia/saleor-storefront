@@ -59,7 +59,8 @@ export const AddressFormModal: React.FC<IProps> = ({
       disabled={false}
       show={show}
       target={target}
-      submitBtnText={submitBtnText}
+      submitBtnText="Hoàn thành"
+      cancelBtnText="Trở lại"
     >
       <AddressForm
         {...props}

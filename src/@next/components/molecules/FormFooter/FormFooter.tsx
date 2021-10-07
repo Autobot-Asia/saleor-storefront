@@ -1,25 +1,14 @@
 import React from "react";
 
-import { Button, ButtonLink } from "@components/atoms";
-
 import * as S from "./styles";
 import { IButtonProps, IProps } from "./types";
-
-const LoadingText = () => <>Loading</>;
 
 const getBtnAction = (btn: IButtonProps) =>
   btn.action && { onClick: btn.action };
 
 const renderCancelBtn = (cancelBtn?: IButtonProps) =>
   cancelBtn && (
-    <ButtonLink
-      {...getBtnAction(cancelBtn)}
-      testingContext="cancelButton"
-      type="button"
-      color="secondary"
-    >
-      {cancelBtn.text}
-    </ButtonLink>
+    <S.BackButton {...getBtnAction(cancelBtn)}>{cancelBtn.text}</S.BackButton>
   );
 
 const renderSubmitBtn = (
@@ -28,16 +17,14 @@ const renderSubmitBtn = (
   formId?: string
 ) =>
   submitBtn && (
-    <Button
-      testingContext={submitBtn.testingContext}
+    <S.SubmitButton
       {...getBtnAction(submitBtn)}
       type={formId ? "submit" : "button"}
       form={formId}
       disabled={disabled}
-      size="sm"
     >
-      {disabled ? <LoadingText /> : submitBtn.text}
-    </Button>
+      {submitBtn.text}
+    </S.SubmitButton>
   );
 
 export const FormFooter: React.FC<IProps> = ({
