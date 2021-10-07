@@ -15,8 +15,8 @@ export interface IProps {
   addPromoCode: (promoCode: string) => void;
   removeVoucherCode: (voucherCode: string) => void;
   submitUnchangedDiscount: () => void;
-  countries: (GetShop_shop_countries | null)[] | undefined;
-  user: User | null | undefined;
+  countries?: (GetShop_shop_countries | null)[];
+  user?: User | null;
   billingAddress?: IAddress | null;
 }
 
