@@ -1,4 +1,4 @@
-import { useCheckout } from "@saleor/sdk";
+import { useAuth, useCheckout } from "@saleor/sdk";
 import React, {
   forwardRef,
   RefForwardingComponent,
@@ -9,6 +9,7 @@ import React, {
 import { useIntl } from "react-intl";
 
 import { CheckoutPayment } from "@components/organisms";
+import { ShopContext } from "@temp/components/ShopProvider/context";
 import { commonMessages } from "@temp/intl";
 import { IFormError } from "@types";
 
@@ -26,13 +27,19 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   { paymentGatewayFormRef, changeSubmitProgress, onPaymentGatewayError },
   ref
 ) => {
-  const { promoCodeDiscount, addPromoCode, removePromoCode } = useCheckout();
+  const {
+    promoCodeDiscount,
+    addPromoCode,
+    removePromoCode,
+    checkout,
+  } = useCheckout();
 
   const [promoCodeErrors, setPromoCodeErrors] = useState<IFormError[]>([]);
 
   const promoCodeDiscountFormId = "discount-form";
   const promoCodeDiscountFormRef = useRef<HTMLFormElement>(null);
   const intl = useIntl();
+  const { countries } = React.useContext(ShopContext);
 
   useImperativeHandle(ref, () => () => {
     if (promoCodeDiscountFormRef.current) {
@@ -103,6 +110,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       ]);
     }
   };
+  const { user } = useAuth();
 
   return (
     <CheckoutPayment
@@ -115,6 +123,9 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       removeVoucherCode={handleRemovePromoCode}
       submitUnchangedDiscount={handleSubmitUnchangedDiscount}
       promoCodeErrors={promoCodeErrors}
+      countries={countries}
+      user={user}
+      billingAddress={checkout?.billingAddress}
     />
   );
 };

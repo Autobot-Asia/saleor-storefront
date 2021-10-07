@@ -238,6 +238,36 @@ export const checkoutMessages = defineMessages({
   deliveryAddress: {
     defaultMessage: "Địa chỉ giao hàng",
   },
+  edit: {
+    defaultMessage: "Chỉnh sửa",
+  },
+  fillInvoiceInfo: {
+    defaultMessage: "Điền thông tin hoá đơn",
+  },
+  selectVoucher: {
+    defaultMessage: "Chọn voucher",
+  },
+  thachSanhVoucher: {
+    defaultMessage: "Thachsanh Voucher",
+  },
+  confirm: {
+    defaultMessage: "Xác nhận",
+  },
+  cancel: {
+    defaultMessage: "Huỷ",
+  },
+  addVoucher: {
+    defaultMessage: "Thêm voucher của shop",
+  },
+  freeShip: {
+    defaultMessage: "Miễn phí vận chuyển",
+  },
+  condition: {
+    defaultMessage: "Điều kiện",
+  },
+  newBillingInfo: {
+    defaultMessage: "Thông tin hoá đơn mới",
+  },
 });
 
 export const prodListHeaderCommonMsg = defineMessages({

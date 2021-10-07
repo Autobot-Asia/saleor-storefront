@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CardHeader, FormFooter } from "@components/molecules";
+import { FormFooter } from "@components/molecules";
 import { Overlay } from "@components/organisms";
 
 import * as S from "./styles";
@@ -55,12 +55,9 @@ export const Modal: React.FC<IProps> = ({
       minHeight={minHeight}
     >
       <S.Modal>
-        <CardHeader divider onHide={hide}>
-          {title}
-        </CardHeader>
-        <S.Content padding={padding}>{children}</S.Content>
+        <S.Header>{title}</S.Header>
+        <S.Content>{children}</S.Content>
         <FormFooter
-          divider
           disabled={disabled}
           {...getSubmitBtnProps(
             submitBtnText,
