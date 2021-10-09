@@ -268,6 +268,9 @@ export const checkoutMessages = defineMessages({
   newBillingInfo: {
     defaultMessage: "Thông tin hoá đơn mới",
   },
+  trolley: {
+    defaultMessage: "Giỏ Hàng",
+  },
 });
 
 export const prodListHeaderCommonMsg = defineMessages({

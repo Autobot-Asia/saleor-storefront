@@ -1,4 +1,4 @@
-import { useCheckout } from "@saleor/sdk";
+import { useCart, useCheckout } from "@saleor/sdk";
 import React from "react";
 import { useIntl } from "react-intl";
 
@@ -9,6 +9,7 @@ import invoice from "../../../../images/invoice.svg";
 import ticket from "../../../../images/ticket.svg";
 import { AddressFormModal } from "..";
 import { BillingInfoOrVoucher } from "../BillingInfoOrVoucher";
+import { CartPayment } from "../CartPayment/CartPayment";
 import { CheckoutModal } from "../CheckoutModal/CheckoutModal";
 import { DeliveryAddress } from "../DeliveryAddress";
 import { VoucherList } from "../VoucherList/VoucherList";
@@ -149,6 +150,7 @@ const CheckoutPayment: React.FC<IProps> = ({
           <VoucherList promoCodeDiscount={promoCodeDiscount} />
         </CheckoutModal>
       )}
+      <CartPayment openVoucherModal={() => setDisplayVoucherModal(true)} />
     </S.Wrapper>
   );
 };
