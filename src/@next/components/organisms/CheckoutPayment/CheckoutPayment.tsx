@@ -1,4 +1,4 @@
-import { useCart, useCheckout } from "@saleor/sdk";
+import { useCheckout } from "@saleor/sdk";
 import React from "react";
 import { useIntl } from "react-intl";
 
