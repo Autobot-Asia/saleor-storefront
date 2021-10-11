@@ -8,7 +8,7 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   margin-right: 79px;
-  width: 200px;
+  min-width: 200px;
   img {
     margin-right: 10px;
   }

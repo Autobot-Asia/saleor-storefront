@@ -11,7 +11,9 @@ import { AddressFormModal } from "..";
 import { BillingInfoOrVoucher } from "../BillingInfoOrVoucher";
 import { CartPayment } from "../CartPayment/CartPayment";
 import { CheckoutModal } from "../CheckoutModal/CheckoutModal";
+import { CheckoutPaymentFooter } from "../CheckoutPaymentFooter/CheckoutPaymentFooter";
 import { DeliveryAddress } from "../DeliveryAddress";
+import { PaymentMethod } from "../PaymentMethod/PaymentMethod";
 import { VoucherList } from "../VoucherList/VoucherList";
 import * as S from "./styles";
 import { IAddressEdit, IProps } from "./types";
@@ -151,6 +153,8 @@ const CheckoutPayment: React.FC<IProps> = ({
         </CheckoutModal>
       )}
       <CartPayment openVoucherModal={() => setDisplayVoucherModal(true)} />
+      <PaymentMethod />
+      <CheckoutPaymentFooter />
     </S.Wrapper>
   );
 };

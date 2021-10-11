@@ -271,6 +271,9 @@ export const checkoutMessages = defineMessages({
   trolley: {
     defaultMessage: "Giỏ Hàng",
   },
+  checkoutPaymentMethod: {
+    defaultMessage: "Phương Thức Thanh Toán",
+  },
 });
 
 export const prodListHeaderCommonMsg = defineMessages({
