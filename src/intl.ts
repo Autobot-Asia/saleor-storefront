@@ -268,6 +268,12 @@ export const checkoutMessages = defineMessages({
   newBillingInfo: {
     defaultMessage: "Thông tin hoá đơn mới",
   },
+  trolley: {
+    defaultMessage: "Giỏ Hàng",
+  },
+  checkoutPaymentMethod: {
+    defaultMessage: "Phương Thức Thanh Toán",
+  },
 });
 
 export const prodListHeaderCommonMsg = defineMessages({
